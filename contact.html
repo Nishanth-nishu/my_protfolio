@@ -1,0 +1,155 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact R Nishanth</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #fff;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        .contact-container {
+            text-align: center;
+            padding: 100px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .contact-container p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            margin-top: 20px;
+        }
+
+        .cta-buttons .btn {
+            text-decoration: none;
+            background: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 0 10px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-buttons .btn:hover {
+            background: #fff;
+            color: #f39c12;
+        }
+
+        .form-container {
+            margin-top: 30px;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-container">
+            <h2>Contact Me</h2>
+            <p>If you would like to get in touch, feel free to send me a message.</p>
+
+            <!-- Contact Form -->
+            <form action="https://formspree.io/f/mqakorrn" method="POST" class="form-container">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <div class="cta-buttons">
+                <a href="mailto:nishanth0962333@gmail.com" class="btn">Email Me</a>
+                <a href="https://github.com/Nishanth-nishu" target="_blank" class="btn">Visit My GitHub</a>
+                <a href="https://www.linkedin.com/in/r-nishanth-/" target="_blank" class="btn">Visit My LinkedIn</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 R Nishanth. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

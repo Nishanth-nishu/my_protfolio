@@ -1,0 +1,188 @@
+<!-- projects.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | R Nishanth</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #fff;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f39c12;
+        }
+
+        .projects-section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .projects-section h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .project-card h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .project-card ul {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .project-card ul li {
+            margin-bottom: 10px;
+        }
+
+        .video-embed {
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cta-buttons .btn {
+            text-decoration: none;
+            background: #f39c12;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            margin: 0 10px;
+            transition: background 0.3s ease;
+        }
+
+        .cta-buttons .btn:hover {
+            background: #fff;
+            color: #f39c12;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="education.html">Education</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <h1>Projects</h1>
+
+            <!-- Pest Detection in Crops Project -->
+            <div class="project-card">
+                <h2>Pest Detection in Crops</h2>
+                <p>
+                    - Analyzed 19,404 rice pest entries, identifying patterns through visualizations and reducing the dataset to 9,126 entries.<br>
+                    - Preprocessed data for machine learning models (Logistic Regression, SVM, AdaBoost, Random Forest) to achieve high accuracy in pest detection.<br>
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/pest_detection_in_crop.git" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- AI-Driven Glycemic Risk Prediction Project -->
+            <div class="project-card">
+                <h2>AI-Driven Glycemic Risk Prediction and Health Management System</h2>
+                <p>- Developed a Gradient Boosting Classifier for diabetes risk prediction, achieving 88% accuracy.</p>
+                <p>- Integrated Gemini AI to deliver personalized health recommendations, including dietary and exercise guidelines.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/diabetic-prevention-" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Embed YouTube Video -->
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/yhzyv5_YrWM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 R Nishanth. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
