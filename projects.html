@@ -76,33 +76,6 @@
             margin-bottom: 10px;
         }
 
-        .project-card ul {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-
-        .project-card ul li {
-            margin-bottom: 10px;
-        }
-
-        .video-embed {
-            margin: 30px 0;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #000;
-        }
-
-        .video-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
         .cta-buttons .btn {
             text-decoration: none;
             background: #f39c12;
@@ -151,6 +124,33 @@
         <section class="projects-section">
             <h1>Projects</h1>
 
+            <!-- Japanese to English Translator Project -->
+            <div class="project-card">
+                <h2>Japanese to English Translator using MBART</h2>
+                <p>
+                    - Built a Flask web application utilizing the MBART-large-50 model for Japanese to English text translation.<br>
+                    - Designed a modular project structure with potential for cloud deployment, ensuring scalability and accessibility.<br>
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/jap_to_eng" target="_blank" class="btn">View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- AI-Driven Glycemic Risk Prediction Project -->
+            <div class="project-card">
+                <h2>AI-Driven Glycemic Risk Prediction and Health Management System</h2>
+                <p>- Developed a Gradient Boosting Classifier for diabetes risk prediction, achieving 88% accuracy.</p>
+                <p>- Integrated Gemini AI to deliver personalized health recommendations, including dietary and exercise guidelines.</p>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/diabetic-prevention-" target="_blank" class="btn">View on GitHub</a>
+                </div>
+                <!-- Embed YouTube Video -->
+                <div class="video-embed" style="text-align: center; margin-top: 20px;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/yhzyv5_YrWM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p style="color: #aaa; font-size: 0.9em;">Video demonstration of the AI-Driven Glycemic Risk Prediction project</p>
+                </div>
+            </div>
+
             <!-- Pest Detection in Crops Project -->
             <div class="project-card">
                 <h2>Pest Detection in Crops</h2>
@@ -163,20 +163,7 @@
                 </div>
             </div>
 
-            <!-- AI-Driven Glycemic Risk Prediction Project -->
-            <div class="project-card">
-                <h2>AI-Driven Glycemic Risk Prediction and Health Management System</h2>
-                <p>- Developed a Gradient Boosting Classifier for diabetes risk prediction, achieving 88% accuracy.</p>
-                <p>- Integrated Gemini AI to deliver personalized health recommendations, including dietary and exercise guidelines.</p>
-                <div class="cta-buttons">
-                    <a href="https://github.com/Nishanth-nishu/diabetic-prevention-" target="_blank" class="btn">View on GitHub</a>
-                </div>
-            </div>
-
-            <!-- Embed YouTube Video -->
-            <div class="video-embed">
-                <iframe src="https://www.youtube.com/embed/yhzyv5_YrWM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            
 
         </section>
     </main>
