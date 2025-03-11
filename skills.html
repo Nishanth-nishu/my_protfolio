@@ -53,8 +53,18 @@
         }
 
         .skills-section h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 20px;
+            border-bottom: 2px solid #f39c12;
+            padding-bottom: 5px;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .skills-section ul {
@@ -65,6 +75,7 @@
         .skills-section ul li {
             font-size: 1.2em;
             margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         footer {
@@ -98,15 +109,17 @@
     <main>
         <section class="skills-section">
             <h1>Skills</h1>
-            <ul>
-                <li><strong>Programming Languages:</strong> Python, C, C++</li>
-                <li><strong>Web Technologies:</strong> HTML, CSS</li>
-                <li><strong>Databases:</strong> MySQL, Sqlite3</li>
-                <li><strong>Data Visualization Tools:</strong> Matplotlib, Seaborn, Power BI</li>
-                <li><strong>Operating Systems:</strong> Windows, Linux</li>
-                <li><strong>Frameworks:</strong> Keras, TensorFlow, Flask, PyTorch</li>
-                <li><strong>Other Skills:</strong> Web Scraping, Data Analytics, Machine Learning (Scikit-learn)</li>
-            </ul>
+            <div class="info-box">
+                <ul>
+                    <li><strong>Programming Languages:</strong> Python, C, C++</li>
+                    <li><strong>Web Technologies:</strong> HTML, CSS</li>
+                    <li><strong>Databases:</strong> MySQL, SQLite3</li>
+                    <li><strong>Data Visualization:</strong> Matplotlib, Seaborn, Power BI</li>
+                    <li><strong>Operating Systems:</strong> Windows, Linux</li>
+                    <li><strong>Frameworks:</strong> Keras, TensorFlow, Flask, PyTorch</li>
+                    <li><strong>Other Skills:</strong> Web Scraping, Data Analytics, Machine Learning (Scikit-learn), Git, GitHub, MLOps, Hugging Face</li>
+                </ul>
+            </div>
         </section>
     </main>
 
