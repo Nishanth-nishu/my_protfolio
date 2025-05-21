@@ -1,107 +1,312 @@
-<!-- projects.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | R Nishanth</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary-color: #3a7bd5;
+            --secondary-color: #00d2ff;
+            --accent-color: #f39c12;
+            --text-color: #ffffff;
+            --dark-bg: #0a192f;
+            --card-bg: rgba(16, 33, 65, 0.8);
+            --header-bg: rgba(10, 25, 47, 0.95);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #1e3c72, #2a5298);
-            color: #fff;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #162b4d 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px 0;
-            position: sticky;
+            background: var(--header-bg);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
-
+        
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
-
+        
         nav ul li {
-            margin: 0 15px;
+            margin: 0 18px;
         }
-
+        
         nav ul li a {
             text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: color 0.3s ease;
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
         }
-
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
         nav ul li a:hover {
-            color: #f39c12;
+            color: var(--secondary-color);
         }
-
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+        
         .projects-section {
-            padding: 50px 20px;
-            max-width: 900px;
+            padding: 20px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-
+        
         .projects-section h1 {
-            font-size: 3em;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .project-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .project-info {
             margin-bottom: 20px;
         }
-
-        .project-card {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        
+        .project-info ul {
+            list-style-type: none;
+            padding-left: 0;
         }
-
-        .project-card h2 {
-            font-size: 2em;
+        
+        .project-info li {
+            position: relative;
+            padding-left: 25px;
             margin-bottom: 10px;
         }
-
-        .project-card p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        
+        .project-info li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
         }
-
-        .cta-buttons .btn {
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        
+        .tech-tag {
+            background: rgba(58, 123, 213, 0.2);
+            border: 1px solid rgba(58, 123, 213, 0.5);
+            border-radius: 20px;
+            padding: 5px 12px;
+            margin: 0 8px 8px 0;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        
+        .cta-buttons {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
-            background: #f39c12;
-            color: #fff;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
             padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            margin: 0 10px;
-            transition: background 0.3s ease;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 12px 12px 0;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-
-        .cta-buttons .btn:hover {
-            background: #fff;
-            color: #f39c12;
+        
+        .btn i {
+            margin-right: 8px;
         }
-
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .video-embed {
+            margin: 25px 0;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        
+        .video-caption {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            margin-top: 30px;
+            padding: 25px 0;
+            background: var(--header-bg);
+            margin-top: 60px;
+            position: relative;
+            z-index: 10;
         }
-
+        
         footer p {
             margin: 0;
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .project-card {
+                padding: 20px;
+            }
+            
+            .project-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .btn {
+                margin: 5px;
+            }
         }
     </style>
 </head>
@@ -122,58 +327,164 @@
 
     <main>
         <section class="projects-section">
-            <h1>Projects</h1>
+            <h1>My Projects</h1>
 
-            <!-- License Plate Detection and Recognition Project -->
+            <!-- Molecular Dynamics Analysis Project -->
             <div class="project-card">
-                <h2>License Plate Detection and Recognition</h2>
-                <p>
-                    - Implemented a computer vision-based model to detect license plates from car images.<br>
-                    - Used OCR techniques to extract and recognize text from the detected plates.<br>
-                    - Built a user-friendly interface for real-time plate detection and recognition.<br>
-                </p>
-                <div class="cta-buttons">
-                    <a href="https://github.com/Nishanth-nishu/licence-plate-detection.git" target="_blank" class="btn">View on GitHub</a>
-                    <a href="https://huggingface.co/spaces/Nishur/licensed" target="_blank" class="btn">Try on Hugging Face</a>
+                <h2>Molecular Dynamics Analysis of Protein 1a62_A</h2>
+                <div class="project-info">
+                    <ul>
+                        <li>Conducted all-atom molecular dynamics simulations on protein 1a62_A utilizing Dynamic PDB dataset</li>
+                        <li>Extracted and analyzed atomic coordinates, velocities, and forces using Python libraries (MDAnalysis, NumPy)</li>
+                        <li>Employed Linux-based high-performance computing environments for data processing tasks</li>
+                    </ul>
                 </div>
-            </div>
-
-            <!-- Japanese to English Translator Project -->
-            <div class="project-card">
-                <h2>Japanese to English Translator using MBART</h2>
-                <p>
-                    - Built a Flask web application utilizing the MBART-large-50 model for Japanese to English text translation.<br>
-                    - Designed a modular project structure with potential for cloud deployment, ensuring scalability and accessibility.<br>
-                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">MDAnalysis</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">HPC</span>
+                    <span class="tech-tag">Linux</span>
+                    <span class="tech-tag">Computational Chemistry</span>
+                </div>
                 <div class="cta-buttons">
-                    <a href="https://github.com/Nishanth-nishu/jap_to_eng" target="_blank" class="btn">View on GitHub</a>
+                    <a href="https://github.com/Nishanth-nishu/molecular-dynamics" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
                 </div>
             </div>
 
             <!-- AI-Driven Glycemic Risk Prediction Project -->
             <div class="project-card">
                 <h2>AI-Driven Glycemic Risk Prediction and Health Management System</h2>
-                <p>- Developed a Gradient Boosting Classifier for diabetes risk prediction, achieving 88% accuracy.</p>
-                <p>- Integrated Gemini AI to deliver personalized health recommendations, including dietary and exercise guidelines.</p>
+                <div class="project-info">
+                    <ul>
+                        <li>Built ML model with 88% accuracy for diabetes risk prediction from patient records</li>
+                        <li>Integrated Gemini AI for personalized lifestyle recommendations, increasing user engagement by 50%</li>
+                        <li>Developed a Gradient Boosting Classifier for diabetes risk prediction with high accuracy</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Gemini AI</span>
+                    <span class="tech-tag">Healthcare AI</span>
+                    <span class="tech-tag">Gradient Boosting</span>
+                </div>
                 <div class="cta-buttons">
-                    <a href="https://github.com/Nishanth-nishu/diabetic-prevention-" target="_blank" class="btn">View on GitHub</a>
+                    <a href="https://github.com/Nishanth-nishu/diabetic-prevention-" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
                 </div>
                 <!-- Embed YouTube Video -->
-                <div class="video-embed" style="text-align: center; margin-top: 20px;">
+                <div class="video-embed">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/yhzyv5_YrWM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p style="color: #aaa; font-size: 0.9em;">Video demonstration of the AI-Driven Glycemic Risk Prediction project</p>
+                </div>
+                <p class="video-caption">Video demonstration of the AI-Driven Glycemic Risk Prediction project</p>
+            </div>
+
+            <!-- AI-Powered Forex Trading Dashboard -->
+            <div class="project-card">
+                <h2>AI-Powered Forex Trading Dashboard</h2>
+                <div class="project-info">
+                    <ul>
+                        <li>Developed end-to-end AI trading system analyzing forex market patterns with 62% accuracy</li>
+                        <li>Implemented 20+ technical indicators with Pandas/NumPy for comprehensive signal validation</li>
+                        <li>Created an intuitive dashboard interface for real-time market analysis and trading signals</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Financial Analysis</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/forex-trading-ai" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Japanese to English Translator Project -->
+            <div class="project-card">
+                <h2>Japanese to English Neural Machine Translation</h2>
+                <div class="project-info">
+                    <ul>
+                        <li>Developed Flask-based translation application achieving 32 BLEU score for Japanese-English translations</li>
+                        <li>Optimized inference speed by 35% through quantization and multi-threading techniques</li>
+                        <li>Built a modular project structure with potential for cloud deployment</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">MBART</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">HuggingFace</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/jap_to_eng" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
+                </div>
+            </div>
+
+            <!-- License Plate Detection and Recognition Project -->
+            <div class="project-card">
+                <h2>License Plate Detection and Recognition</h2>
+                <div class="project-info">
+                    <ul>
+                        <li>Implemented a computer vision-based model to detect license plates from car images</li>
+                        <li>Used OCR techniques to extract and recognize text from the detected plates</li>
+                        <li>Built a user-friendly interface for real-time plate detection and recognition</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Computer Vision</span>
+                    <span class="tech-tag">OCR</span>
+                    <span class="tech-tag">Deep Learning</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="https://github.com/Nishanth-nishu/licence-plate-detection.git" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
+                    <a href="https://huggingface.co/spaces/Nishur/licensed" target="_blank" class="btn"><i class="fas fa-globe"></i>Try on Hugging Face</a>
+                </div>
+            </div>
+
+            <!-- Research Project on Japanese-to-English Video Dubbing -->
+            <div class="project-card">
+                <h2>Japanese-to-English Video Dubbing Using BERT and Open Voice</h2>
+                <div class="project-info">
+                    <ul>
+                        <li>Developed an automated system for translating and dubbing Japanese videos into English</li>
+                        <li>Used BERT for high-quality translations and Open Voice for natural-sounding English dubbing</li>
+                        <li>Research paper accepted at ICMED 2025 conference</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">BERT</span>
+                    <span class="tech-tag">Open Voice</span>
+                    <span class="tech-tag">NLP</span>
+                    <span class="tech-tag">Speech Synthesis</span>
+                    <span class="tech-tag">Machine Translation</span>
+                </div>
+                <div class="cta-buttons">
+                    <a href="javascript:void(0)" class="btn"><i class="fas fa-file-alt"></i>Paper Coming Soon</a>
                 </div>
             </div>
 
             <!-- Pest Detection in Crops Project -->
             <div class="project-card">
                 <h2>Pest Detection in Crops</h2>
-                <p>
-                    - Analyzed 19,404 rice pest entries, identifying patterns through visualizations and reducing the dataset to 9,126 entries.<br>
-                    - Preprocessed data for machine learning models (Logistic Regression, SVM, AdaBoost, Random Forest) to achieve high accuracy in pest detection.<br>
-                </p>
+                <div class="project-info">
+                    <ul>
+                        <li>Analyzed 19,404 rice pest entries, identifying patterns through visualizations and reducing the dataset to 9,126 entries</li>
+                        <li>Preprocessed data for machine learning models (Logistic Regression, SVM, AdaBoost, Random Forest) to achieve high accuracy in pest detection</li>
+                        <li>Developed a system to help farmers identify and address pest infestations early</li>
+                    </ul>
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Data Analysis</span>
+                    <span class="tech-tag">Agricultural Technology</span>
+                </div>
                 <div class="cta-buttons">
-                    <a href="https://github.com/Nishanth-nishu/pest_detection_in_crop.git" target="_blank" class="btn">View on GitHub</a>
+                    <a href="https://github.com/Nishanth-nishu/pest_detection_in_crop.git" target="_blank" class="btn"><i class="fab fa-github"></i>View on GitHub</a>
                 </div>
             </div>
 
