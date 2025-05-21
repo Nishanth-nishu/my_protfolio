@@ -1,97 +1,198 @@
-<!-- experience.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience | R Nishanth</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary-color: #3a7bd5;
+            --secondary-color: #00d2ff;
+            --accent-color: #f39c12;
+            --text-color: #ffffff;
+            --dark-bg: #0a192f;
+            --card-bg: rgba(16, 33, 65, 0.8);
+            --header-bg: rgba(10, 25, 47, 0.95);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #1e3c72, #2a5298);
-            color: #fff;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #162b4d 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px 0;
-            position: sticky;
+            background: var(--header-bg);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
-
+        
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
-
+        
         nav ul li {
-            margin: 0 15px;
+            margin: 0 18px;
         }
-
+        
         nav ul li a {
             text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: color 0.3s ease;
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
         }
-
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
         nav ul li a:hover {
-            color: #f39c12;
+            color: var(--secondary-color);
         }
-
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+        
         .experience-section {
-            padding: 50px 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 30px 0;
         }
-
+        
         .experience-section h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .experience-card {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            padding: 20px;
+            font-size: 2.5em;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            width: 100%;
         }
-
+        
+        .experience-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
         .experience-card h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
         }
-
+        
         .experience-card p {
-            font-size: 1.2em;
-            line-height: 1.6;
+            font-size: 1.1em;
             margin-bottom: 10px;
+            color: #e6e6e6;
         }
-
+        
+        .experience-card ul {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+        
+        .experience-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .experience-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: -20px;
+            color: var(--secondary-color);
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            margin-top: 30px;
+            padding: 25px 0;
+            background: var(--header-bg);
+            margin-top: 60px;
+            position: relative;
+            z-index: 10;
         }
-
+        
         footer p {
             margin: 0;
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .experience-section h1 {
+                font-size: 2em;
+            }
+            
+            .experience-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Me</a></li>
@@ -105,29 +206,44 @@
     </header>
 
     <main>
-        <section class="experience-section">
-            <h1>Professional Experience</h1>
+        <div class="container">
+            <section class="experience-section">
+                <h1>Professional Experience</h1>
 
-            <div class="experience-card">
-                <h2>Oracle APEX Application Trainee</h2>
-                <p><strong>Company:</strong> ProwessIQ Information Systems Pvt Ltd</p>
-                <p><strong>Location:</strong> Chennai, India</p>
-                <p><strong>Duration:</strong> Feb 2025 – Present</p>
-                <ul>
-                    <li>Developed an AI-powered image recommendation system using EfficientNet and FAISS, improving image retrieval accuracy.</li>
-                    <li>Engineered a seamless Oracle APEX integration, optimizing database interactions and enhancing system efficiency.</li>
-                    <li>Designed and deployed a scalable AI solution for enterprise applications, reducing computational overhead.</li>
-                    <li>Collaborated cross-functionally with data scientists and software engineers to refine model performance and deployment strategies.</li>
-                    <li>Optimized system performance by implementing data preprocessing pipelines, ensuring high-quality model inputs.</li>
-                </ul>
-            </div>
-            
+                <div class="experience-card">
+                    <h2>Open Source Contributor</h2>
+                    <p><strong>Projects:</strong> LangChain & PyTorch</p>
+                    <p><strong>Duration:</strong> May 2025 – Present</p>
+                    <ul>
+                        <li>Actively contribute to LangChain, developing and improving components for building applications with large language models.</li>
+                        <li>Implement and optimize PyTorch modules, enhancing deep learning model performance and functionality.</li>
+                        <li>Collaborate with global developer communities to resolve issues, review pull requests, and maintain documentation.</li>
+                        <li>Develop custom integrations between LangChain components and external APIs, improving framework versatility.</li>
+                        <li>Create educational content and examples to help new users understand implementation best practices.</li>
+                    </ul>
+                </div>
 
-        </section>
+                <div class="experience-card">
+                    <h2>Oracle APEX Application Trainee</h2>
+                    <p><strong>Company:</strong> ProwessIQ Information Systems Pvt Ltd</p>
+                    <p><strong>Location:</strong> Chennai, India</p>
+                    <p><strong>Duration:</strong> Feb 2025 – Present</p>
+                    <ul>
+                        <li>Developed an AI-powered image recommendation system using EfficientNet and FAISS, improving image retrieval accuracy.</li>
+                        <li>Engineered a seamless Oracle APEX integration, optimizing database interactions and enhancing system efficiency.</li>
+                        <li>Designed and deployed a scalable AI solution for enterprise applications, reducing computational overhead.</li>
+                        <li>Collaborated cross-functionally with data scientists and software engineers to refine model performance and deployment strategies.</li>
+                        <li>Optimized system performance by implementing data preprocessing pipelines, ensuring high-quality model inputs.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 R Nishanth. All Rights Reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 R Nishanth. All Rights Reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
