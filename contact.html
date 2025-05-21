@@ -1,114 +1,325 @@
-<!-- contact.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact R Nishanth</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Contact | R Nishanth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary-color: #3a7bd5;
+            --secondary-color: #00d2ff;
+            --accent-color: #f39c12;
+            --text-color: #ffffff;
+            --dark-bg: #0a192f;
+            --card-bg: rgba(16, 33, 65, 0.8);
+            --header-bg: rgba(10, 25, 47, 0.95);
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom, #1e3c72, #2a5298);
-            color: #fff;
+            box-sizing: border-box;
         }
-
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #162b4d 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
         header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px 0;
-            position: sticky;
+            background: var(--header-bg);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
         }
-
+        
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
-
+        
         nav ul li {
-            margin: 0 15px;
+            margin: 0 18px;
         }
-
+        
         nav ul li a {
             text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            transition: color 0.3s ease;
+            color: var(--text-color);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s ease;
         }
-
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
         nav ul li a:hover {
-            color: #f39c12;
+            color: var(--secondary-color);
         }
-
-        .contact-container {
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        main {
+            padding: 120px 0 60px;
+            min-height: 100vh;
+        }
+        
+        .contact-section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             text-align: center;
-            padding: 100px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 10px;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            width: 100%;
         }
-
-        .contact-container h2 {
-            font-size: 2.5em;
+        
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+        
+        .contact-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+        
+        .form-container {
+            margin: 30px 0;
+        }
+        
+        .form-group {
             margin-bottom: 20px;
         }
-
-        .contact-container p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-
-        .cta-buttons {
-            margin-top: 20px;
-        }
-
-        .cta-buttons .btn {
-            text-decoration: none;
-            background: #f39c12;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            margin: 0 10px;
-            transition: background 0.3s ease;
-        }
-
-        .cta-buttons .btn:hover {
-            background: #fff;
-            color: #f39c12;
-        }
-
-        .form-container {
-            margin-top: 30px;
-        }
-
-        .form-container input, .form-container textarea {
+        
+        .form-container input,
+        .form-container textarea {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1.1em;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
-
+        
+        .form-container input:focus,
+        .form-container textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-container textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-container input::placeholder,
+        .form-container textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .contact-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .contact-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .icon-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin-bottom: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .icon-circle i {
+            font-size: 1.6rem;
+        }
+        
+        .contact-option p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .contact-option a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-option a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 15px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            margin-top: 30px;
+            padding: 25px 0;
+            background: var(--header-bg);
+            margin-top: 60px;
+            position: relative;
+            z-index: 10;
         }
-
+        
         footer p {
             margin: 0;
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .contact-card {
+                padding: 25px;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-option {
+                margin: 15px 0;
+            }
         }
     </style>
 </head>
@@ -128,22 +339,61 @@
     </header>
 
     <main>
-        <section class="contact-container">
-            <h2>Contact Me</h2>
-            <p>If you would like to get in touch, feel free to send me a message.</p>
-
-            <!-- Contact Form -->
-            <form action="https://formspree.io/f/mqakorrn" method="POST" class="form-container">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-
-            <div class="cta-buttons">
-                <a href="mailto:nishanth0962333@gmail.com" class="btn">Email Me</a>
-                <a href="https://github.com/Nishanth-nishu" target="_blank" class="btn">Visit My GitHub</a>
-                <a href="https://www.linkedin.com/in/r-nishanth-/" target="_blank" class="btn">Visit My LinkedIn</a>
+        <section class="contact-section">
+            <h1>Get In Touch</h1>
+            
+            <div class="contact-card">
+                <p>Feel free to reach out if you're looking to collaborate on projects, have job opportunities, or just want to connect!</p>
+                
+                <!-- Contact Form -->
+                <form action="https://formspree.io/f/mqakorrn" method="POST" class="form-container">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <div class="icon-circle">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>Email</p>
+                        <a href="mailto:nishanth0962333@gmail.com">nishanth0962333@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-option">
+                        <div class="icon-circle">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p>Location</p>
+                        <span>Hyderabad, India</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Nishanth-nishu" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/r-nishanth-/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/nishanth_2317/" target="_blank" class="social-link">
+                        <i class="fas fa-code"></i>
+                    </a>
+                    <a href="mailto:nishanth0962333@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
