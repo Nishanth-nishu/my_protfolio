@@ -64,6 +64,43 @@
             opacity: 0.3;
         }
 
+        /* ML Visualizations Background */
+        .ml-viz-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+
+        .neural-network-viz {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 280px;
+            height: 320px;
+        }
+
+        .diffusion-viz {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 280px;
+        }
+
+        .training-viz {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            width: 320px;
+            height: 200px;
+        }
+
         /* Stats Overview */
         .stats-overview {
             position: fixed;
@@ -507,6 +544,13 @@
     <div class="gradient-bg"></div>
     <canvas id="particles"></canvas>
 
+    <!-- ML Visualizations Background -->
+    <div class="ml-viz-bg">
+        <canvas id="neuralNetworkViz" class="neural-network-viz"></canvas>
+        <canvas id="diffusionViz" class="diffusion-viz"></canvas>
+        <canvas id="trainingViz" class="training-viz"></canvas>
+    </div>
+
     <!-- Stats Overview -->
     <div class="stats-overview">
         <div class="stat-badge">
@@ -579,6 +623,19 @@
                                     <li>Enhanced model capabilities through architectural modifications and performance improvements</li>
                                     <li>Conducted research on AI applications in pharmaceutical research and chemical compound analysis</li>
                                 </ul>
+                                
+                                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(0, 255, 245, 0.2);">
+                                    <h3 style="color: var(--primary); font-size: 1.1em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        Teaching Assistant - ML4Science
+                                    </h3>
+                                    <ul>
+                                        <li>Conducted hands-on workshops on advanced deep learning for PhD, MS, and UG students from STEM backgrounds</li>
+                                        <li>Taught comprehensive sessions on Diffusion Models (DDPM, DDIM) covering theory, implementation, and practical applications in image synthesis</li>
+                                        <li>Delivered CNN architecture workshops focusing on design patterns, transfer learning, and real-world computer vision applications</li>
+                                        <li>Guided students through research methodologies, experiment design, and model optimization techniques for scientific computing</li>
+                                    </ul>
+                                </div>
                             </div>
 
                             <div class="exp-tags">
@@ -586,6 +643,9 @@
                                 <span class="tag">Drug Discovery</span>
                                 <span class="tag">Model Optimization</span>
                                 <span class="tag">Research</span>
+                                <span class="tag">Teaching</span>
+                                <span class="tag">Diffusion Models</span>
+                                <span class="tag">CNNs</span>
                             </div>
                         </div>
                     </div>
@@ -763,6 +823,320 @@
         }
 
         animateParticles();
+
+        // Neural Network Visualization
+        const nnCanvas = document.getElementById('neuralNetworkViz');
+        const nnCtx = nnCanvas.getContext('2d');
+        nnCanvas.width = 280;
+        nnCanvas.height = 320;
+
+        const layers = [4, 6, 6, 4, 2];
+        const neuronRadius = 8;
+        const layerSpacing = 60;
+        const neuronSpacing = 45;
+
+        function drawNeuralNetwork() {
+            nnCtx.clearRect(0, 0, nnCanvas.width, nnCanvas.height);
+            
+            const neurons = [];
+            
+            // Calculate neuron positions
+            layers.forEach((count, layerIdx) => {
+                const layerNeurons = [];
+                const startY = (nnCanvas.height - (count - 1) * neuronSpacing) / 2;
+                const x = 30 + layerIdx * layerSpacing;
+                
+                for (let i = 0; i < count; i++) {
+                    layerNeurons.push({ x, y: startY + i * neuronSpacing });
+                }
+                neurons.push(layerNeurons);
+            });
+            
+            // Draw connections
+            for (let l = 0; l < neurons.length - 1; l++) {
+                neurons[l].forEach(n1 => {
+                    neurons[l + 1].forEach(n2 => {
+                        nnCtx.beginPath();
+                        nnCtx.moveTo(n1.x, n1.y);
+                        nnCtx.lineTo(n2.x, n2.y);
+                        nnCtx.strokeStyle = `rgba(0, 255, 245, ${0.15 + Math.random() * 0.15})`;
+                        nnCtx.lineWidth = 1;
+                        nnCtx.stroke();
+                    });
+                });
+            }
+            
+            // Draw neurons
+            neurons.forEach((layer, layerIdx) => {
+                layer.forEach(neuron => {
+                    nnCtx.beginPath();
+                    nnCtx.arc(neuron.x, neuron.y, neuronRadius, 0, Math.PI * 2);
+                    const gradient = nnCtx.createRadialGradient(neuron.x, neuron.y, 0, neuron.x, neuron.y, neuronRadius);
+                    gradient.addColorStop(0, 'rgba(0, 255, 245, 0.8)');
+                    gradient.addColorStop(1, 'rgba(124, 58, 237, 0.6)');
+                    nnCtx.fillStyle = gradient;
+                    nnCtx.fill();
+                    nnCtx.strokeStyle = 'rgba(0, 255, 245, 0.5)';
+                    nnCtx.lineWidth = 2;
+                    nnCtx.stroke();
+                });
+            });
+            
+            // Add labels
+            nnCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            nnCtx.font = '10px JetBrains Mono';
+            nnCtx.textAlign = 'center';
+            nnCtx.fillText('Input', 30, 20);
+            nnCtx.fillText('Output', 270, 20);
+            
+            // Animate signal flow
+            const time = Date.now() / 1000;
+            const progress = (time % 2) / 2;
+            const activeLayer = Math.floor(progress * (layers.length - 1));
+            
+            if (activeLayer < neurons.length) {
+                neurons[activeLayer].forEach(neuron => {
+                    nnCtx.beginPath();
+                    nnCtx.arc(neuron.x, neuron.y, neuronRadius + 4, 0, Math.PI * 2);
+                    nnCtx.strokeStyle = `rgba(0, 255, 245, ${0.5 * (1 - progress % 0.25)})`;
+                    nnCtx.lineWidth = 2;
+                    nnCtx.stroke();
+                });
+            }
+            
+            requestAnimationFrame(drawNeuralNetwork);
+        }
+        
+        drawNeuralNetwork();
+
+        // Diffusion Process Visualization
+        const diffCanvas = document.getElementById('diffusionViz');
+        const diffCtx = diffCanvas.getContext('2d');
+        diffCanvas.width = 300;
+        diffCanvas.height = 280;
+
+        let diffusionStep = 0;
+        const maxSteps = 50;
+
+        function drawDiffusionProcess() {
+            diffCtx.clearRect(0, 0, diffCanvas.width, diffCanvas.height);
+            
+            // Title
+            diffCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            diffCtx.font = '11px JetBrains Mono';
+            diffCtx.textAlign = 'center';
+            diffCtx.fillText('Diffusion Denoising Process', diffCanvas.width / 2, 20);
+            
+            const boxSize = 80;
+            const boxes = 3;
+            const spacing = 15;
+            const startX = (diffCanvas.width - (boxes * boxSize + (boxes - 1) * spacing)) / 2;
+            const startY = 50;
+            
+            // Draw three stages: Noisy -> Intermediate -> Clean
+            for (let i = 0; i < boxes; i++) {
+                const x = startX + i * (boxSize + spacing);
+                const noiseLevel = 1 - (i / (boxes - 1)) * (diffusionStep / maxSteps);
+                
+                // Box background
+                diffCtx.fillStyle = 'rgba(15, 15, 25, 0.6)';
+                diffCtx.fillRect(x, startY, boxSize, boxSize);
+                
+                // Add noise pattern
+                for (let py = 0; py < boxSize; py += 4) {
+                    for (let px = 0; px < boxSize; px += 4) {
+                        if (Math.random() < noiseLevel) {
+                            const brightness = Math.random();
+                            diffCtx.fillStyle = `rgba(0, 255, 245, ${brightness * 0.5})`;
+                            diffCtx.fillRect(x + px, startY + py, 4, 4);
+                        }
+                    }
+                }
+                
+                // Add clear pattern (circle) that emerges
+                const clearAlpha = 1 - noiseLevel;
+                const centerX = x + boxSize / 2;
+                const centerY = startY + boxSize / 2;
+                const radius = 25;
+                
+                const gradient = diffCtx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+                gradient.addColorStop(0, `rgba(0, 255, 245, ${clearAlpha * 0.8})`);
+                gradient.addColorStop(1, `rgba(124, 58, 237, ${clearAlpha * 0.6})`);
+                
+                diffCtx.beginPath();
+                diffCtx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                diffCtx.fillStyle = gradient;
+                diffCtx.fill();
+                
+                // Border
+                diffCtx.strokeStyle = `rgba(0, 255, 245, ${0.3 + clearAlpha * 0.4})`;
+                diffCtx.lineWidth = 2;
+                diffCtx.strokeRect(x, startY, boxSize, boxSize);
+                
+                // Labels
+                diffCtx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                diffCtx.font = '9px JetBrains Mono';
+                diffCtx.textAlign = 'center';
+                const labels = ['Noisy', 'Denoising', 'Clean'];
+                diffCtx.fillText(labels[i], centerX, startY + boxSize + 15);
+            }
+            
+            // Draw arrows
+            diffCtx.strokeStyle = 'rgba(0, 255, 245, 0.6)';
+            diffCtx.fillStyle = 'rgba(0, 255, 245, 0.6)';
+            diffCtx.lineWidth = 2;
+            
+            for (let i = 0; i < boxes - 1; i++) {
+                const x1 = startX + (i + 1) * boxSize + i * spacing;
+                const x2 = startX + (i + 1) * boxSize + (i + 1) * spacing;
+                const y = startY + boxSize / 2;
+                
+                diffCtx.beginPath();
+                diffCtx.moveTo(x1 + 5, y);
+                diffCtx.lineTo(x2 - 10, y);
+                diffCtx.stroke();
+                
+                // Arrowhead
+                diffCtx.beginPath();
+                diffCtx.moveTo(x2 - 10, y);
+                diffCtx.lineTo(x2 - 15, y - 4);
+                diffCtx.lineTo(x2 - 15, y + 4);
+                diffCtx.closePath();
+                diffCtx.fill();
+            }
+            
+            // Step counter
+            diffCtx.fillStyle = 'rgba(0, 255, 245, 0.8)';
+            diffCtx.font = 'bold 11px JetBrains Mono';
+            diffCtx.textAlign = 'center';
+            diffCtx.fillText(`Step: ${diffusionStep}/${maxSteps}`, diffCanvas.width / 2, startY + boxSize + 40);
+            
+            // Progress bar
+            const barWidth = 200;
+            const barHeight = 8;
+            const barX = (diffCanvas.width - barWidth) / 2;
+            const barY = startY + boxSize + 55;
+            
+            diffCtx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            diffCtx.fillRect(barX, barY, barWidth, barHeight);
+            
+            const progressGradient = diffCtx.createLinearGradient(barX, 0, barX + barWidth * (diffusionStep / maxSteps), 0);
+            progressGradient.addColorStop(0, 'rgba(0, 255, 245, 0.8)');
+            progressGradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)');
+            diffCtx.fillStyle = progressGradient;
+            diffCtx.fillRect(barX, barY, barWidth * (diffusionStep / maxSteps), barHeight);
+            
+            diffusionStep = (diffusionStep + 1) % (maxSteps + 20);
+            
+            setTimeout(() => requestAnimationFrame(drawDiffusionProcess), 80);
+        }
+        
+        drawDiffusionProcess();
+
+        // Training Loss Visualization
+        const trainCanvas = document.getElementById('trainingViz');
+        const trainCtx = trainCanvas.getContext('2d');
+        trainCanvas.width = 320;
+        trainCanvas.height = 200;
+
+        const epochs = 100;
+        let currentEpoch = 0;
+        const trainLoss = [];
+        const valLoss = [];
+
+        for (let i = 0; i < epochs; i++) {
+            trainLoss.push(2.5 * Math.exp(-i / 20) + 0.05 * Math.random());
+            valLoss.push(2.5 * Math.exp(-i / 20) + 0.1 * Math.random() + 0.05);
+        }
+
+        function drawTrainingCurves() {
+            trainCtx.clearRect(0, 0, trainCanvas.width, trainCanvas.height);
+            
+            const padding = 40;
+            const graphWidth = trainCanvas.width - padding * 2;
+            const graphHeight = trainCanvas.height - padding * 2;
+            
+            // Title
+            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            trainCtx.font = '11px JetBrains Mono';
+            trainCtx.textAlign = 'center';
+            trainCtx.fillText('Model Training Progress', trainCanvas.width / 2, 15);
+            
+            // Draw axes
+            trainCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            trainCtx.lineWidth = 1;
+            trainCtx.beginPath();
+            trainCtx.moveTo(padding, padding);
+            trainCtx.lineTo(padding, trainCanvas.height - padding);
+            trainCtx.lineTo(trainCanvas.width - padding, trainCanvas.height - padding);
+            trainCtx.stroke();
+            
+            // Grid
+            trainCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            for (let i = 0; i <= 4; i++) {
+                const y = padding + (i / 4) * graphHeight;
+                trainCtx.beginPath();
+                trainCtx.moveTo(padding, y);
+                trainCtx.lineTo(trainCanvas.width - padding, y);
+                trainCtx.stroke();
+            }
+            
+            // Draw curves
+            const drawCurve = (data, color, label) => {
+                trainCtx.beginPath();
+                trainCtx.strokeStyle = color;
+                trainCtx.lineWidth = 2.5;
+                trainCtx.shadowBlur = 8;
+                trainCtx.shadowColor = color;
+                
+                for (let i = 0; i <= Math.min(currentEpoch, data.length - 1); i++) {
+                    const x = padding + (i / (epochs - 1)) * graphWidth;
+                    const y = trainCanvas.height - padding - (data[i] / 3) * graphHeight;
+                    
+                    if (i === 0) {
+                        trainCtx.moveTo(x, y);
+                    } else {
+                        trainCtx.lineTo(x, y);
+                    }
+                }
+                trainCtx.stroke();
+                trainCtx.shadowBlur = 0;
+            };
+            
+            drawCurve(trainLoss, 'rgba(0, 255, 245, 0.9)', 'Train');
+            drawCurve(valLoss, 'rgba(124, 58, 237, 0.9)', 'Val');
+            
+            // Legend
+            trainCtx.font = '10px JetBrains Mono';
+            trainCtx.textAlign = 'left';
+            
+            trainCtx.fillStyle = 'rgba(0, 255, 245, 0.9)';
+            trainCtx.fillRect(padding + 10, padding + 10, 20, 3);
+            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            trainCtx.fillText('Train Loss', padding + 35, padding + 13);
+            
+            trainCtx.fillStyle = 'rgba(124, 58, 237, 0.9)';
+            trainCtx.fillRect(padding + 120, padding + 10, 20, 3);
+            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            trainCtx.fillText('Val Loss', padding + 145, padding + 13);
+            
+            // Epoch label
+            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            trainCtx.font = '9px JetBrains Mono';
+            trainCtx.textAlign = 'center';
+            trainCtx.fillText(`Epoch: ${currentEpoch}/${epochs}`, trainCanvas.width / 2, trainCanvas.height - 10);
+            
+            currentEpoch++;
+            if (currentEpoch >= epochs) {
+                setTimeout(() => {
+                    currentEpoch = 0;
+                }, 2000);
+            }
+            
+            setTimeout(() => requestAnimationFrame(drawTrainingCurves), 50);
+        }
+        
+        drawTrainingCurves();
 
         // Header scroll effect
         const header = document.getElementById('header');
