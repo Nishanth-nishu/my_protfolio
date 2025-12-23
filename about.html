@@ -14,7 +14,7 @@
             --secondary-color: #00d2ff;
             --accent-color: #f39c12;
             --text-color: #ffffff;
-            --dark-bg: #0a192f;
+            --dark-bg: #0a0e27;
             --card-bg: rgba(16, 33, 65, 0.95);
             --header-bg: rgba(10, 25, 47, 0.98);
         }
@@ -27,7 +27,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--dark-bg);
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
@@ -40,125 +40,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-            opacity: 0.25;
-        }
-
-        .research-viz-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .metrics-grid-left {
-            position: absolute;
-            top: 20%;
-            left: 2%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            width: 160px;
-        }
-
-        .metrics-grid-right {
-            position: absolute;
-            top: 20%;
-            right: 2%;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            width: 160px;
-        }
-
-        .research-metric-card {
-            background: rgba(16, 33, 65, 0.9);
-            border-radius: 10px;
-            padding: 12px 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            animation: floatSlow 4s ease-in-out infinite;
-        }
-
-        .research-metric-card:nth-child(2) { animation-delay: 0.8s; }
-        .research-metric-card:nth-child(3) { animation-delay: 1.6s; }
-        .research-metric-card:nth-child(4) { animation-delay: 2.4s; }
-        .research-metric-card:nth-child(5) { animation-delay: 3.2s; }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .research-metric-card:hover {
-            transform: translateY(-5px) scale(1.05);
-            border-color: var(--secondary-color);
-            box-shadow: 0 8px 24px rgba(0, 210, 255, 0.5);
-        }
-
-        .research-metric-card .label {
-            font-size: 0.7em;
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .research-metric-card .value {
-            font-size: 1.5em;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .roc-curve-viz {
-            position: absolute;
-            bottom: 10%;
-            right: 3%;
-            width: 200px;
-            height: 200px;
-            background: rgba(16, 33, 65, 0.9);
-            border-radius: 12px;
-            padding: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-importance-viz {
-            position: absolute;
-            bottom: 10%;
-            left: 3%;
-            width: 220px;
-            height: 200px;
-            background: rgba(16, 33, 65, 0.9);
-            border-radius: 12px;
-            padding: 12px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .viz-title {
-            font-size: 0.75em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        canvas.viz-canvas {
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
+            opacity: 0.3;
         }
         
         .container {
@@ -177,7 +59,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
         }
         
@@ -255,7 +137,7 @@
 
         .highlight-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(58, 123, 213, 0.2), rgba(0, 210, 255, 0.2));
+            background: linear-gradient(135deg, rgba(58, 123, 213, 0.3), rgba(0, 210, 255, 0.3));
             border: 1px solid var(--secondary-color);
             padding: 4px 12px;
             border-radius: 20px;
@@ -294,23 +176,23 @@
         
         .info-box {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 210, 255, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             backdrop-filter: blur(10px);
         }
         
         .info-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
-            border-color: rgba(0, 210, 255, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 210, 255, 0.3);
+            border-color: rgba(0, 210, 255, 0.4);
         }
 
         .research-highlight {
-            background: linear-gradient(135deg, rgba(58, 123, 213, 0.15), rgba(0, 210, 255, 0.15));
+            background: linear-gradient(135deg, rgba(58, 123, 213, 0.2), rgba(0, 210, 255, 0.2));
             border-left: 4px solid var(--secondary-color);
             padding: 20px;
             margin: 20px 0;
@@ -331,18 +213,19 @@
         }
 
         .stat-card {
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 10px;
-            padding: 20px;
+            background: rgba(0, 210, 255, 0.15);
+            border: 2px solid rgba(0, 210, 255, 0.4);
+            border-radius: 12px;
+            padding: 25px;
             text-align: center;
             transition: all 0.3s ease;
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
-            background: rgba(0, 210, 255, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
+            background: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.4);
+            border-color: var(--secondary-color);
         }
 
         .stat-card .stat-number {
@@ -354,9 +237,101 @@
 
         .stat-card .stat-label {
             font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        /* Research Metrics Section */
+        .research-metrics-section {
+            margin: 60px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .metrics-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .metric-card-large {
+            background: rgba(16, 33, 65, 0.9);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card-large:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 12px 40px rgba(0, 210, 255, 0.5);
+        }
+
+        .metric-card-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .metrics-grid-small {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .metric-item-small {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .metric-item-small:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .metric-label-small {
+            font-size: 0.7em;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .metric-value-small {
+            font-size: 1.6em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .viz-canvas-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 15px;
+        }
+
+        canvas.viz-canvas {
+            width: 100%;
+            height: 100%;
         }
         
         .certificate-button {
@@ -370,7 +345,7 @@
             font-size: 0.9em;
             font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -389,7 +364,7 @@
         
         .certificate-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 210, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.5);
         }
         
         .certificate-button:hover::before {
@@ -420,25 +395,8 @@
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.9em;
         }
-        
-        @media (max-width: 1200px) {
-            .research-viz-container {
-                opacity: 0.5;
-            }
-            
-            .metrics-grid-left,
-            .metrics-grid-right,
-            .roc-curve-viz,
-            .feature-importance-viz {
-                transform: scale(0.8);
-            }
-        }
 
         @media (max-width: 768px) {
-            .research-viz-container {
-                display: none;
-            }
-
             nav ul {
                 flex-wrap: wrap;
             }
@@ -463,73 +421,15 @@
                 display: block;
                 margin: 10px 0;
             }
+
+            .metrics-showcase {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
-
-    <div class="research-viz-container">
-        <!-- Left Metrics Grid -->
-        <div class="metrics-grid-left">
-            <div class="research-metric-card">
-                <div class="label">RMSE</div>
-                <div class="value">0.142</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">MAE</div>
-                <div class="value">0.089</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">R² Score</div>
-                <div class="value">0.947</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">IoU</div>
-                <div class="value">0.873</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">mAP</div>
-                <div class="value">0.921</div>
-            </div>
-        </div>
-
-        <!-- Right Metrics Grid -->
-        <div class="metrics-grid-right">
-            <div class="research-metric-card">
-                <div class="label">BLEU</div>
-                <div class="value">0.687</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">Perplexity</div>
-                <div class="value">23.4</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">FID Score</div>
-                <div class="value">12.3</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">SSIM</div>
-                <div class="value">0.943</div>
-            </div>
-            <div class="research-metric-card">
-                <div class="label">Dice Coef</div>
-                <div class="value">0.891</div>
-            </div>
-        </div>
-
-        <!-- ROC Curve Visualization -->
-        <div class="roc-curve-viz">
-            <div class="viz-title">ROC Curve</div>
-            <canvas id="roc-canvas" class="viz-canvas"></canvas>
-        </div>
-
-        <!-- Feature Importance -->
-        <div class="feature-importance-viz">
-            <div class="viz-title">Feature Importance</div>
-            <canvas id="feature-canvas" class="viz-canvas"></canvas>
-        </div>
-    </div>
 
     <header>
         <nav class="container">
@@ -591,6 +491,98 @@
                         As a research fellow, I actively contribute to cutting-edge ML research, focusing on optimization techniques, model efficiency, and novel architectures. My problem-solving skills are sharpened through competitive programming, having solved <strong>100+ LeetCode problems</strong> across various difficulty levels, strengthening my algorithmic thinking and optimization capabilities.
                     </p>
                 </div>
+
+                <!-- Research Metrics Showcase -->
+                <section class="research-metrics-section">
+                    <h2 class="section-title">Research Performance Metrics</h2>
+                    
+                    <div class="metrics-showcase">
+                        <!-- Regression Metrics -->
+                        <div class="metric-card-large">
+                            <div class="metric-card-title">Regression Metrics</div>
+                            <div class="metrics-grid-small">
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">RMSE</div>
+                                    <div class="metric-value-small">0.142</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">MAE</div>
+                                    <div class="metric-value-small">0.089</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">R² Score</div>
+                                    <div class="metric-value-small">0.947</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">MSE</div>
+                                    <div class="metric-value-small">0.020</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Computer Vision Metrics -->
+                        <div class="metric-card-large">
+                            <div class="metric-card-title">Computer Vision</div>
+                            <div class="metrics-grid-small">
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">IoU</div>
+                                    <div class="metric-value-small">0.873</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">mAP</div>
+                                    <div class="metric-value-small">0.921</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">Dice Coef</div>
+                                    <div class="metric-value-small">0.891</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">SSIM</div>
+                                    <div class="metric-value-small">0.943</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NLP & Generative Metrics -->
+                        <div class="metric-card-large">
+                            <div class="metric-card-title">NLP & Generative</div>
+                            <div class="metrics-grid-small">
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">BLEU</div>
+                                    <div class="metric-value-small">0.687</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">Perplexity</div>
+                                    <div class="metric-value-small">23.4</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">FID Score</div>
+                                    <div class="metric-value-small">12.3</div>
+                                </div>
+                                <div class="metric-item-small">
+                                    <div class="metric-label-small">ROUGE-L</div>
+                                    <div class="metric-value-small">0.724</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ROC Curve -->
+                        <div class="metric-card-large">
+                            <div class="metric-card-title">ROC Analysis</div>
+                            <div class="viz-canvas-container">
+                                <canvas id="roc-canvas" class="viz-canvas"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Feature Importance -->
+                        <div class="metric-card-large">
+                            <div class="metric-card-title">Feature Importance</div>
+                            <div class="viz-canvas-container">
+                                <canvas id="feature-canvas" class="viz-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <h2 class="section-title">Key Achievements & Certifications</h2>
                 <div class="info-box">
@@ -694,7 +686,7 @@
         bgCanvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 60;
+        const particleCount = 80;
 
         class Particle {
             constructor() {
@@ -715,7 +707,7 @@
             draw() {
                 bgCtx.beginPath();
                 bgCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                bgCtx.fillStyle = 'rgba(58, 123, 213, 0.6)';
+                bgCtx.fillStyle = 'rgba(58, 123, 213, 0.7)';
                 bgCtx.fill();
             }
         }
@@ -741,7 +733,7 @@
                         bgCtx.beginPath();
                         bgCtx.moveTo(particles[i].x, particles[i].y);
                         bgCtx.lineTo(particles[j].x, particles[j].y);
-                        bgCtx.strokeStyle = `rgba(58, 123, 213, ${0.2 * (1 - distance / 150)})`;
+                        bgCtx.strokeStyle = `rgba(58, 123, 213, ${0.25 * (1 - distance / 150)})`;
                         bgCtx.lineWidth = 1;
                         bgCtx.stroke();
                     }
@@ -756,73 +748,94 @@
         // ROC Curve Visualization
         const rocCanvas = document.getElementById('roc-canvas');
         const rocCtx = rocCanvas.getContext('2d');
-        rocCanvas.width = 176;
-        rocCanvas.height = 156;
+        
+        function initROCCanvas() {
+            const rect = rocCanvas.getBoundingClientRect();
+            rocCanvas.width = rect.width * 2;
+            rocCanvas.height = rect.height * 2;
+            rocCtx.scale(2, 2);
+        }
+        
+        initROCCanvas();
 
         function drawROCCurve() {
-            rocCtx.clearRect(0, 0, rocCanvas.width, rocCanvas.height);
+            const width = rocCanvas.width / 2;
+            const height = rocCanvas.height / 2;
+            const padding = 40;
+            const plotWidth = width - padding * 2;
+            const plotHeight = height - padding * 2;
+
+            rocCtx.clearRect(0, 0, width, height);
 
             // Draw axes
-            rocCtx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            rocCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
             rocCtx.lineWidth = 2;
             rocCtx.beginPath();
-            rocCtx.moveTo(20, 10);
-            rocCtx.lineTo(20, 136);
-            rocCtx.lineTo(166, 136);
+            rocCtx.moveTo(padding, padding);
+            rocCtx.lineTo(padding, height - padding);
+            rocCtx.lineTo(width - padding, height - padding);
             rocCtx.stroke();
 
             // Draw diagonal reference line
-            rocCtx.strokeStyle = 'rgba(243, 156, 18, 0.5)';
-            rocCtx.lineWidth = 1;
+            rocCtx.strokeStyle = 'rgba(243, 156, 18, 0.6)';
+            rocCtx.lineWidth = 2;
             rocCtx.setLineDash([5, 5]);
             rocCtx.beginPath();
-            rocCtx.moveTo(20, 136);
-            rocCtx.lineTo(166, 10);
+            rocCtx.moveTo(padding, height - padding);
+            rocCtx.lineTo(width - padding, padding);
             rocCtx.stroke();
             rocCtx.setLineDash([]);
 
             // Draw ROC curve
-            rocCtx.strokeStyle = 'rgba(0, 210, 255, 0.9)';
-            rocCtx.lineWidth = 2.5;
+            rocCtx.strokeStyle = 'rgba(0, 210, 255, 1)';
+            rocCtx.lineWidth = 3;
             rocCtx.beginPath();
-            rocCtx.moveTo(20, 136);
             
-            // Smooth ROC curve points
             const points = [
-                [20, 136], [30, 100], [45, 70], [65, 45], 
-                [90, 30], [120, 20], [150, 15], [166, 10]
+                [0, 1], [0.05, 0.7], [0.1, 0.5], [0.2, 0.3], 
+                [0.35, 0.15], [0.55, 0.08], [0.75, 0.04], [0.9, 0.02], [1, 0]
             ];
             
-            for (let i = 0; i < points.length; i++) {
-                rocCtx.lineTo(points[i][0], points[i][1]);
-            }
+            points.forEach((point, i) => {
+                const x = padding + point[0] * plotWidth;
+                const y = height - padding - (1 - point[1]) * plotHeight;
+                if (i === 0) {
+                    rocCtx.moveTo(x, y);
+                } else {
+                    rocCtx.lineTo(x, y);
+                }
+            });
             rocCtx.stroke();
 
             // Fill area under curve
-            rocCtx.fillStyle = 'rgba(0, 210, 255, 0.15)';
+            rocCtx.fillStyle = 'rgba(0, 210, 255, 0.2)';
             rocCtx.beginPath();
-            rocCtx.moveTo(20, 136);
-            for (let i = 0; i < points.length; i++) {
-                rocCtx.lineTo(points[i][0], points[i][1]);
-            }
-            rocCtx.lineTo(166, 136);
+            rocCtx.moveTo(padding, height - padding);
+            points.forEach(point => {
+                const x = padding + point[0] * plotWidth;
+                const y = height - padding - (1 - point[1]) * plotHeight;
+                rocCtx.lineTo(x, y);
+            });
+            rocCtx.lineTo(width - padding, height - padding);
             rocCtx.closePath();
             rocCtx.fill();
 
             // Labels
-            rocCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            rocCtx.font = '9px Poppins';
-            rocCtx.fillText('FPR', 145, 150);
+            rocCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            rocCtx.font = 'bold 12px Poppins';
+            rocCtx.textAlign = 'center';
+            rocCtx.fillText('False Positive Rate', width / 2, height - 10);
+            
             rocCtx.save();
-            rocCtx.translate(8, 80);
+            rocCtx.translate(15, height / 2);
             rocCtx.rotate(-Math.PI / 2);
-            rocCtx.fillText('TPR', 0, 0);
+            rocCtx.fillText('True Positive Rate', 0, 0);
             rocCtx.restore();
 
             // AUC label
-            rocCtx.fillStyle = 'rgba(0, 210, 255, 0.9)';
-            rocCtx.font = 'bold 10px Poppins';
-            rocCtx.fillText('AUC = 0.992', 60, 130);
+            rocCtx.fillStyle = 'rgba(0, 210, 255, 1)';
+            rocCtx.font = 'bold 14px Poppins';
+            rocCtx.fillText('AUC = 0.992', width / 2, padding + 20);
         }
 
         drawROCCurve();
@@ -830,53 +843,70 @@
         // Feature Importance Visualization
         const featureCanvas = document.getElementById('feature-canvas');
         const featureCtx = featureCanvas.getContext('2d');
-        featureCanvas.width = 196;
-        featureCanvas.height = 156;
+        
+        function initFeatureCanvas() {
+            const rect = featureCanvas.getBoundingClientRect();
+            featureCanvas.width = rect.width * 2;
+            featureCanvas.height = rect.height * 2;
+            featureCtx.scale(2, 2);
+        }
+        
+        initFeatureCanvas();
 
         const features = [
-            { name: 'F1', value: 0.95 },
-            { name: 'F2', value: 0.82 },
-            { name: 'F3', value: 0.76 },
-            { name: 'F4', value: 0.68 },
-            { name: 'F5', value: 0.54 }
+            { name: 'Feature 1', value: 0.95 },
+            { name: 'Feature 2', value: 0.82 },
+            { name: 'Feature 3', value: 0.76 },
+            { name: 'Feature 4', value: 0.68 },
+            { name: 'Feature 5', value: 0.54 }
         ];
 
         function drawFeatureImportance() {
-            const barHeight = 22;
-            const spacing = 6;
-            const maxWidth = 140;
-            const startX = 40;
-            const startY = 15;
+            const width = featureCanvas.width / 2;
+            const height = featureCanvas.height / 2;
+            const barHeight = 32;
+            const spacing = 10;
+            const maxBarWidth = width * 0.6;
+            const startX = width * 0.3;
+            const startY = 30;
 
-            featureCtx.font = '10px Poppins';
+            featureCtx.clearRect(0, 0, width, height);
+            featureCtx.font = 'bold 12px Poppins';
             featureCtx.textBaseline = 'middle';
 
             features.forEach((feature, index) => {
                 const y = startY + index * (barHeight + spacing);
-                const barWidth = feature.value * maxWidth;
+                const barWidth = feature.value * maxBarWidth;
 
                 // Feature label
-                featureCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                featureCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
                 featureCtx.textAlign = 'right';
-                featureCtx.fillText(feature.name, startX - 5, y + barHeight / 2);
+                featureCtx.fillText(feature.name, startX - 10, y + barHeight / 2);
 
                 // Bar background
                 featureCtx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-                featureCtx.fillRect(startX, y, maxWidth, barHeight);
+                featureCtx.fillRect(startX, y, maxBarWidth, barHeight);
 
                 // Gradient bar
                 const gradient = featureCtx.createLinearGradient(startX, 0, startX + barWidth, 0);
-                gradient.addColorStop(0, 'rgba(58, 123, 213, 0.8)');
-                gradient.addColorStop(1, 'rgba(0, 210, 255, 0.8)');
+                gradient.addColorStop(0, 'rgba(58, 123, 213, 0.9)');
+                gradient.addColorStop(1, 'rgba(0, 210, 255, 0.9)');
                 
                 featureCtx.fillStyle = gradient;
                 featureCtx.fillRect(startX, y, barWidth, barHeight);
 
                 // Value label
-                featureCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+                featureCtx.fillStyle = 'rgba(255, 255, 255, 1)';
+                featureCtx.font = 'bold 11px Poppins';
                 featureCtx.textAlign = 'left';
-                featureCtx.fillText(feature.value.toFixed(2), startX + barWidth + 5, y + barHeight / 2);
+                featureCtx.fillText(feature.value.toFixed(2), startX + barWidth + 8, y + barHeight / 2);
             });
+
+            // Title
+            featureCtx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            featureCtx.font = 'bold 14px Poppins';
+            featureCtx.textAlign = 'center';
+            featureCtx.fillText('Top 5 Features', width / 2, 15);
         }
 
         drawFeatureImportance();
@@ -885,6 +915,10 @@
         window.addEventListener('resize', () => {
             bgCanvas.width = window.innerWidth;
             bgCanvas.height = window.innerHeight;
+            initROCCanvas();
+            initFeatureCanvas();
+            drawROCCurve();
+            drawFeatureImportance();
         });
     </script>
 </body>
