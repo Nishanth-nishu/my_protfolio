@@ -6,17 +6,17 @@
     <title>Skills | R Nishanth</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3a7bd5;
-            --secondary-color: #00d2ff;
-            --accent-color: #f39c12;
-            --text-color: #ffffff;
-            --dark-bg: #0a192f;
-            --card-bg: rgba(16, 33, 65, 0.8);
-            --header-bg: rgba(10, 25, 47, 0.95);
+            --primary: #00fff5;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --pink: #ec4899;
+            --dark: #0a0a0f;
+            --card: rgba(15, 15, 25, 0.95);
+            --glow: rgba(0, 255, 245, 0.5);
         }
         
         * {
@@ -26,201 +26,393 @@
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #162b4d 100%);
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
             line-height: 1.6;
         }
-        
-        .container {
+
+        /* Animated gradient background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 255, 245, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(30deg); }
+        }
+
+        /* Particle canvas */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        /* Skills Visualizations Background */
+        .skills-viz-bg {
+            position: fixed;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.12;
+        }
+
+        .proficiency-gauge {
+            position: absolute;
+            top: 15%;
+            right: 5%;
+            width: 280px;
+            height: 280px;
+        }
+
+        .tech-constellation {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            width: 320px;
+            height: 320px;
+        }
+
+        .skill-bars-viz {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 300px;
+            height: 240px;
+        }
+
+        /* Container */
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
         }
-        
+
+        /* Header */
         header {
-            background: var(--header-bg);
-            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(8px);
+            padding: 20px 0;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(10, 10, 15, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
         }
-        
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
+            gap: 40px;
         }
-        
-        nav ul li {
-            margin: 0 18px;
-        }
-        
-        nav ul li a {
+
+        nav a {
             text-decoration: none;
-            color: var(--text-color);
-            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
             font-weight: 500;
             letter-spacing: 0.5px;
-            padding: 8px 0;
+            text-transform: uppercase;
             position: relative;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
-        
-        nav ul li a::after {
+
+        nav a::before {
             content: '';
             position: absolute;
+            bottom: -5px;
+            left: 0;
             width: 0;
             height: 2px;
-            background: var(--secondary-color);
-            bottom: 0;
-            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: width 0.3s ease;
         }
-        
-        nav ul li a:hover {
-            color: var(--secondary-color);
+
+        nav a:hover {
+            color: var(--primary);
         }
-        
-        nav ul li a:hover::after {
+
+        nav a:hover::before {
             width: 100%;
         }
-        
+
+        /* Main */
         main {
-            padding: 120px 0 60px;
-            min-height: 100vh;
-        }
-        
-        .skills-section {
-            padding: 20px 0;
-        }
-        
-        .skills-section h1 {
-            font-size: 2.8em;
-            margin-bottom: 30px;
-            font-weight: 700;
-            text-align: center;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            width: 100%;
-        }
-        
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .skill-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .skill-card h2 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-card h2 i {
-            margin-right: 12px;
-            font-size: 1.3em;
-        }
-        
-        .skill-card ul {
-            list-style: none;
-            padding-left: 10px;
-        }
-        
-        .skill-card ul li {
-            margin-bottom: 12px;
-            font-size: 1.05em;
-            display: flex;
-            align-items: center;
-        }
-        
-        .skill-card ul li::before {
-            content: '▹';
-            color: var(--secondary-color);
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-        
-        .skill-progress {
-            margin-top: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border-radius: 4px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: width 1s ease;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 25px 0;
-            background: var(--header-bg);
-            margin-top: 60px;
+            padding: 140px 0 100px;
             position: relative;
             z-index: 10;
         }
-        
-        footer p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9em;
+
+        /* Page Title */
+        .page-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
         }
-        
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 60px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Skill Card */
+        .skill-card {
+            background: rgba(15, 15, 25, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+        .skill-card:nth-child(7) { animation-delay: 0.7s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--pink));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 255, 245, 0.4);
+            box-shadow: 0 25px 70px rgba(0, 255, 245, 0.3);
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Card Header */
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+
+        .skill-header h2 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Skill Items */
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .skill-item {
+            position: relative;
+        }
+
+        .skill-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .skill-level {
+            font-size: 0.8em;
+            color: var(--primary);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Progress Bar */
+        .skill-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            position: relative;
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 10px var(--glow);
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(10, 10, 15, 0.5);
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.95em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .skills-viz-bg {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
             nav ul {
+                gap: 20px;
                 flex-wrap: wrap;
             }
-            
-            nav ul li {
-                margin: 5px 10px;
+
+            nav a {
+                font-size: 12px;
             }
-            
+
+            .page-title {
+                font-size: 2.5em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
             .skill-card {
-                padding: 20px;
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="gradient-bg"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- Skills Visualizations Background -->
+    <div class="skills-viz-bg">
+        <canvas id="proficiencyGauge" class="proficiency-gauge"></canvas>
+        <canvas id="techConstellation" class="tech-constellation"></canvas>
+        <canvas id="skillBarsViz" class="skill-bars-viz"></canvas>
+    </div>
+
+    <header id="header">
         <nav class="container">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Me</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="skills.html">Skills</a></li>
                 <li><a href="experience.html">Experience</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -232,208 +424,638 @@
 
     <main>
         <div class="container">
-            <section class="skills-section">
-                <h1>Technical Skills</h1>
-                
-                <div class="skills-container">
-                    <div class="skill-card">
-                        <h2><i class="fas fa-code"></i>Programming Languages</h2>
-                        <ul>
-                            <li>
-                                Python
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 92%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                C
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 85%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                C++
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 80%;"></div>
-                                </div>
-                            </li>
-                        </ul>
+            <h1 class="page-title">Technical Expertise</h1>
+            <p class="page-subtitle">// Mastering the tools of innovation</p>
+
+            <div class="skills-grid">
+                <!-- Programming Languages -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h2>Programming Languages</h2>
                     </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-desktop"></i>Web Technologies</h2>
-                        <ul>
-                            <li>
-                                HTML
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 90%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                CSS
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 85%;"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-database"></i>Databases</h2>
-                        <ul>
-                            <li>
-                                MySQL
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 88%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                SQLite3
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 82%;"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-chart-line"></i>Data Visualization</h2>
-                        <ul>
-                            <li>
-                                Matplotlib
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 90%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Seaborn
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 87%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Power BI
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 80%;"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-laptop-code"></i>Operating Systems</h2>
-                        <ul>
-                            <li>
-                                Windows
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 95%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Linux
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 85%;"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-cogs"></i>Frameworks</h2>
-                        <ul>
-                            <li>
-                                Keras
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 85%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                TensorFlow
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 80%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Flask
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 78%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                PyTorch
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 75%;"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-card">
-                        <h2><i class="fas fa-tools"></i>Other Skills</h2>
-                        <ul>
-                            <li>
-                                Web Scraping
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 85%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Data Analytics
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 88%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Machine Learning (Scikit-learn)
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 82%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Git & GitHub
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 90%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                MLOps
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 75%;"></div>
-                                </div>
-                            </li>
-                            <li>
-                                Hugging Face
-                                <div class="skill-progress">
-                                    <div class="progress-bar" style="width: 78%;"></div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-level">92%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">C</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+
+                <!-- Web Technologies -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h2>Web Technologies</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">HTML</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">CSS</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2>Databases</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">SQLite3</span>
+                                <span class="skill-level">82%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Visualization -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h2>Data Visualization</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Matplotlib</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Seaborn</span>
+                                <span class="skill-level">87%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="87"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Power BI</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operating Systems -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h2>Operating Systems</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Windows</span>
+                                <span class="skill-level">95%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Linux</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML/DL Frameworks -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h2>ML/DL Frameworks</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Keras</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">TensorFlow</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">PyTorch</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Flask</span>
+                                <span class="skill-level">78%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="78"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Skills -->
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h2>Advanced Skills</h2>
+                    </div>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Git & GitHub</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Data Analytics</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Web Scraping</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Scikit-learn</span>
+                                <span class="skill-level">82%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">Hugging Face</span>
+                                <span class="skill-level">78%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="78"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-item-header">
+                                <span class="skill-name">MLOps</span>
+                                <span class="skill-level">75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress-fill" data-width="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 R Nishanth. All Rights Reserved.</p>
+            <p>&copy; 2024 R Nishanth. Engineered with precision and passion.</p>
         </div>
     </footer>
 
     <script>
-        // Animation for progress bars
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initial state - all progress bars at 0 width
-            const progressBars = document.querySelectorAll('.progress-bar');
-            progressBars.forEach(bar => {
-                const targetWidth = bar.style.width;
-                bar.style.width = '0';
-                
-                // Trigger animation after a small delay
-                setTimeout(() => {
-                    bar.style.width = targetWidth;
-                }, 300);
+        // Particle System
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 2 + 0.5;
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 255, 245, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
             });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 255, 245, ${0.15 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        animateParticles();
+
+        // Proficiency Gauge
+        const gaugeCanvas = document.getElementById('proficiencyGauge');
+        const gaugeCtx = gaugeCanvas.getContext('2d');
+        gaugeCanvas.width = 280;
+        gaugeCanvas.height = 280;
+
+        let gaugeProgress = 0;
+        const targetGauge = 85; // Overall proficiency
+
+        function drawProficiencyGauge() {
+            const centerX = gaugeCanvas.width / 2;
+            const centerY = gaugeCanvas.height / 2;
+            const radius = 100;
+            const startAngle = 0.75 * Math.PI;
+            const endAngle = 2.25 * Math.PI;
+
+            gaugeCtx.clearRect(0, 0, gaugeCanvas.width, gaugeCanvas.height);
+
+            // Title
+            gaugeCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            gaugeCtx.font = '12px JetBrains Mono';
+            gaugeCtx.textAlign = 'center';
+            gaugeCtx.fillText('Overall Proficiency', centerX, 30);
+
+            // Background arc
+            gaugeCtx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            gaugeCtx.lineWidth = 15;
+            gaugeCtx.beginPath();
+            gaugeCtx.arc(centerX, centerY, radius, startAngle, endAngle);
+            gaugeCtx.stroke();
+
+            // Progress arc
+            const progressAngle = startAngle + (endAngle - startAngle) * (gaugeProgress / 100);
+            
+            const gradient = gaugeCtx.createLinearGradient(centerX - radius, centerY, centerX + radius, centerY);
+            gradient.addColorStop(0, '#00fff5');
+            gradient.addColorStop(0.5, '#7c3aed');
+            gradient.addColorStop(1, '#ec4899');
+            
+            gaugeCtx.strokeStyle = gradient;
+            gaugeCtx.lineWidth = 15;
+            gaugeCtx.lineCap = 'round';
+            gaugeCtx.shadowBlur = 15;
+            gaugeCtx.shadowColor = 'rgba(0, 255, 245, 0.5)';
+            gaugeCtx.beginPath();
+            gaugeCtx.arc(centerX, centerY, radius, startAngle, progressAngle);
+            gaugeCtx.stroke();
+            gaugeCtx.shadowBlur = 0;
+
+            // Center circle
+            gaugeCtx.fillStyle = 'rgba(15, 15, 25, 0.9)';
+            gaugeCtx.beginPath();
+            gaugeCtx.arc(centerX, centerY, radius - 25, 0, Math.PI * 2);
+            gaugeCtx.fill();
+
+            // Percentage text
+            gaugeCtx.fillStyle = '#00fff5';
+            gaugeCtx.font = 'bold 32px JetBrains Mono';
+            gaugeCtx.textAlign = 'center';
+            gaugeCtx.textBaseline = 'middle';
+            gaugeCtx.fillText(Math.floor(gaugeProgress) + '%', centerX, centerY - 5);
+
+            gaugeCtx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+            gaugeCtx.font = '10px JetBrains Mono';
+            gaugeCtx.fillText('EXPERTISE LEVEL', centerX, centerY + 25);
+
+            // Animate
+            if (gaugeProgress < targetGauge) {
+                gaugeProgress += 0.5;
+            }
+
+            requestAnimationFrame(drawProficiencyGauge);
+        }
+
+        drawProficiencyGauge();
+
+        // Tech Constellation
+        const constCanvas = document.getElementById('techConstellation');
+        const constCtx = constCanvas.getContext('2d');
+        constCanvas.width = 320;
+        constCanvas.height = 320;
+
+        class TechStar {
+            constructor(x, y, label, size) {
+                this.x = x;
+                this.y = y;
+                this.label = label;
+                this.size = size;
+                this.pulse = Math.random() * Math.PI * 2;
+                this.orbitAngle = Math.random() * Math.PI * 2;
+                this.orbitSpeed = (Math.random() - 0.5) * 0.01;
+            }
+        }
+
+        const centerX = constCanvas.width / 2;
+        const centerY = constCanvas.height / 2;
+
+        const stars = [
+            new TechStar(centerX, centerY, 'AI', 12),
+            new TechStar(centerX - 80, centerY - 60, 'ML', 8),
+            new TechStar(centerX + 90, centerY - 50, 'DL', 8),
+            new TechStar(centerX - 100, centerY + 40, 'CV', 7),
+            new TechStar(centerX + 85, centerY + 55, 'NLP', 7),
+            new TechStar(centerX, centerY - 100, 'PyTorch', 6),
+            new TechStar(centerX, centerY + 100, 'TF', 6)
+        ];
+
+        function drawTechConstellation() {
+            constCtx.clearRect(0, 0, constCanvas.width, constCanvas.height);
+
+            // Title
+            constCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            constCtx.font = '11px JetBrains Mono';
+            constCtx.textAlign = 'center';
+            constCtx.fillText('Tech Constellation', constCanvas.width / 2, 15);
+
+            // Draw connections
+            for (let i = 0; i < stars.length; i++) {
+                for (let j = i + 1; j < stars.length; j++) {
+                    const dist = Math.sqrt(
+                        Math.pow(stars[i].x - stars[j].x, 2) + 
+                        Math.pow(stars[i].y - stars[j].y, 2)
+                    );
+                    
+                    if (dist < 150) {
+                        constCtx.strokeStyle = `rgba(0, 255, 245, ${0.2 * (1 - dist / 150)})`;
+                        constCtx.lineWidth = 1;
+                        constCtx.beginPath();
+                        constCtx.moveTo(stars[i].x, stars[i].y);
+                        constCtx.lineTo(stars[j].x, stars[j].y);
+                        constCtx.stroke();
+                    }
+                }
+            }
+
+            // Draw stars
+            stars.forEach(star => {
+                const pulseSize = Math.sin(star.pulse) * 2;
+                star.pulse += 0.05;
+
+                // Glow
+                const gradient = constCtx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size + pulseSize + 10);
+                gradient.addColorStop(0, 'rgba(0, 255, 245, 0.6)');
+                gradient.addColorStop(1, 'rgba(0, 255, 245, 0)');
+                constCtx.fillStyle = gradient;
+                constCtx.beginPath();
+                constCtx.arc(star.x, star.y, star.size + pulseSize + 10, 0, Math.PI * 2);
+                constCtx.fill();
+
+                // Star
+                constCtx.fillStyle = '#00fff5';
+                constCtx.beginPath();
+                constCtx.arc(star.x, star.y, star.size + pulseSize, 0, Math.PI * 2);
+                constCtx.fill();
+
+                // Label
+                constCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                constCtx.font = 'bold 9px JetBrains Mono';
+                constCtx.textAlign = 'center';
+                constCtx.fillText(star.label, star.x, star.y - star.size - 10);
+            });
+
+            requestAnimationFrame(drawTechConstellation);
+        }
+
+        drawTechConstellation();
+
+        // Skill Bars Visualization
+        const barsCanvas = document.getElementById('skillBarsViz');
+        const barsCtx = barsCanvas.getContext('2d');
+        barsCanvas.width = 300;
+        barsCanvas.height = 240;
+
+        const skillsData = [
+            { name: 'Python', value: 92, color: '#00fff5' },
+            { name: 'PyTorch', value: 88, color: '#7c3aed' },
+            { name: 'Git', value: 90, color: '#ec4899' },
+            { name: 'ML', value: 85, color: '#f59e0b' },
+            { name: 'DL', value: 80, color: '#00fff5' }
+        ];
+
+        let barAnimProgress = [];
+        skillsData.forEach(() => barAnimProgress.push(0));
+
+        function drawSkillBars() {
+            barsCtx.clearRect(0, 0, barsCanvas.width, barsCanvas.height);
+
+            // Title
+            barsCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            barsCtx.font = '11px JetBrains Mono';
+            barsCtx.textAlign = 'center';
+            barsCtx.fillText('Top Skills', barsCanvas.width / 2, 15);
+
+            const barHeight = 25;
+            const spacing = 10;
+            const maxWidth = 200;
+            const startY = 35;
+            const startX = 80;
+
+            skillsData.forEach((skill, i) => {
+                const y = startY + i * (barHeight + spacing);
+                
+                // Animate progress
+                if (barAnimProgress[i] < skill.value) {
+                    barAnimProgress[i] += 0.5;
+                }
+                
+                const barWidth = (barAnimProgress[i] / 100) * maxWidth;
+
+                // Label
+                barsCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                barsCtx.font = '10px JetBrains Mono';
+                barsCtx.textAlign = 'right';
+                barsCtx.fillText(skill.name, startX - 10, y + barHeight / 2 + 3);
+
+                // Background bar
+                barsCtx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                barsCtx.fillRect(startX, y, maxWidth, barHeight);
+
+                // Progress bar
+                const gradient = barsCtx.createLinearGradient(startX, 0, startX + barWidth, 0);
+                gradient.addColorStop(0, skill.color);
+                gradient.addColorStop(1, skill.color + '88');
+                barsCtx.fillStyle = gradient;
+                barsCtx.fillRect(startX, y, barWidth, barHeight);
+
+                // Percentage
+                barsCtx.fillStyle = 'white';
+                barsCtx.font = 'bold 9px JetBrains Mono';
+                barsCtx.textAlign = 'left';
+                barsCtx.fillText(Math.floor(barAnimProgress[i]) + '%', startX + barWidth + 5, y + barHeight / 2 + 3);
+            });
+
+            requestAnimationFrame(drawSkillBars);
+        }
+
+        drawSkillBars();
+
+        // Progress bar animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            progressBars.forEach(bar => {
+                bar.style.width = '0';
+            });
+
+            setTimeout(() => {
+                progressBars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth + '%';
+                });
+            }, 500);
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
     </script>
 </body>
