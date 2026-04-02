@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nishanth-nishu.github.io/my_protfolio/sitemap.xml

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | R Nishanth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050c1a;
+      --violet: #7c3aed;
+      --cyan: #22d3ee;
+      --text: #f1f5f9;
+      --text-sec: #94a3b8;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .container { padding: 40px 24px; max-width: 600px; }
+    .code {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--text-sec);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .terminal {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(14, 22, 42, 0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 20px 24px;
+      text-align: left;
+      font-size: 0.85rem;
+      color: var(--text-sec);
+      margin-bottom: 32px;
+      backdrop-filter: blur(20px);
+    }
+    .terminal .prompt { color: var(--cyan); }
+    .terminal .error { color: #f43f5e; }
+    .terminal .comment { color: #546e7a; }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--violet), var(--cyan));
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(124,58,237,0.45);
+      transition: 0.3s ease;
+    }
+    a.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,58,237,0.55); }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.2;
+      pointer-events: none;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+    .orb-1 { width: 400px; height: 400px; background: var(--violet); top: -100px; right: -100px; }
+    .orb-2 { width: 300px; height: 300px; background: var(--cyan); bottom: -80px; left: -60px; animation-delay: -3s; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="container">
+    <div class="code">404</div>
+    <h1>Agent Not Found</h1>
+    <p>The page you're looking for doesn't exist or has been moved. But my AI agents are still running.</p>
+    <div class="terminal">
+      <span class="prompt">$</span> curl nishanth.dev/this-page<br>
+      <span class="error">Error: 404 — Resource not found</span><br>
+      <span class="comment"># Redirecting to orchestrator...</span><br>
+      <span class="prompt">$</span> redirect → index.html ✓
+    </div>
+    <a href="index.html" class="btn">← Back to Home</a>
+  </div>
+</body>
+</html>

@@ -3,642 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experience | R Nishanth</title>
+    <title>Experience | R Nishanth — Agentic AI Systems Architect</title>
+    <meta name="description" content="Professional journey from research fellow at IIIT Hyderabad to building production AI agent systems. Open source contributor to Scikit-learn & PyTorch.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #00fff5;
-            --secondary: #7c3aed;
-            --accent: #f59e0b;
-            --pink: #ec4899;
-            --dark: #0a0a0f;
-            --card: rgba(15, 15, 25, 0.95);
-            --glow: rgba(0, 255, 245, 0.5);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: white;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Animated gradient background */
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 255, 245, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
-        }
-
-        /* Particle canvas */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.3;
-        }
-
-        /* ML Visualizations Background */
-        .ml-viz-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0.15;
-        }
-
-        .neural-network-viz {
-            position: absolute;
-            top: 15%;
-            left: 5%;
-            width: 280px;
-            height: 320px;
-        }
-
-        .diffusion-viz {
-            position: absolute;
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
-            width: 300px;
-            height: 280px;
-        }
-
-        .training-viz {
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
-            width: 320px;
-            height: 200px;
-        }
-
-        /* Stats Overview */
-        .stats-overview {
-            position: fixed;
-            top: 50%;
-            right: 30px;
-            transform: translateY(-50%);
-            z-index: 5;
-            display: grid;
-            gap: 15px;
-        }
-
-        .stat-badge {
-            background: rgba(15, 15, 25, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            min-width: 140px;
-            text-align: center;
-            transition: all 0.4s ease;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .stat-badge:nth-child(2) { animation-delay: 0.5s; }
-        .stat-badge:nth-child(3) { animation-delay: 1s; }
-
-        .stat-badge:hover {
-            transform: translateY(-8px) scale(1.05);
-            border-color: var(--primary);
-            box-shadow: 0 15px 50px var(--glow);
-        }
-
-        .stat-badge-icon {
-            font-size: 2em;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .stat-badge-label {
-            font-size: 0.75em;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 20px 0;
-            backdrop-filter: blur(20px) saturate(180%);
-            background: rgba(10, 10, 15, 0.75);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        nav a:hover::before {
-            width: 100%;
-        }
-
-        /* Main */
-        main {
-            padding: 140px 0 100px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Page Title */
-        .page-title {
-            font-size: 3.5em;
-            font-weight: 800;
-            margin-bottom: 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -1px;
-        }
-
-        .page-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 60px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 40px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary), var(--secondary), var(--pink));
-            transform: translateX(-50%);
-            z-index: 1;
-        }
-
-        /* Experience Card */
-        .exp-item {
-            display: flex;
-            margin-bottom: 60px;
-            position: relative;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .exp-item:nth-child(1) { animation-delay: 0.1s; }
-        .exp-item:nth-child(2) { animation-delay: 0.3s; }
-        .exp-item:nth-child(3) { animation-delay: 0.5s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .exp-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .exp-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .exp-content {
-            width: calc(50% - 40px);
-        }
-
-        .exp-card {
-            background: rgba(15, 15, 25, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .exp-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .exp-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 255, 245, 0.4);
-            box-shadow: 0 25px 70px rgba(0, 255, 245, 0.3);
-        }
-
-        .exp-card:hover::before {
-            opacity: 1;
-        }
-
-        /* Timeline Dot */
-        .exp-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            border: 4px solid var(--dark);
-            z-index: 2;
-            box-shadow: 0 0 20px var(--glow);
-            transition: all 0.3s ease;
-        }
-
-        .exp-item:hover .exp-dot {
-            transform: translateX(-50%) scale(1.4);
-            box-shadow: 0 0 30px var(--glow);
-        }
-
-        /* Card Content */
-        .exp-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .exp-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: var(--dark);
-            flex-shrink: 0;
-        }
-
-        .exp-header-text h2 {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .exp-company {
-            font-size: 1em;
-            color: var(--primary);
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .exp-meta {
-            display: flex;
-            gap: 20px;
-            margin: 15px 0;
-            flex-wrap: wrap;
-        }
-
-        .exp-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .exp-meta-item i {
-            color: var(--primary);
-        }
-
-        .exp-description {
-            margin: 20px 0;
-        }
-
-        .exp-description ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .exp-description li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.7;
-        }
-
-        .exp-description li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-size: 1.3em;
-        }
-
-        /* Tags */
-        .exp-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .tag {
-            background: rgba(0, 255, 245, 0.1);
-            border: 1px solid rgba(0, 255, 245, 0.3);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            color: var(--primary);
-            font-weight: 500;
-            font-family: 'JetBrains Mono', monospace;
-            transition: all 0.3s ease;
-        }
-
-        .tag:hover {
-            background: rgba(0, 255, 245, 0.2);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 80px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(10, 10, 15, 0.5);
-            backdrop-filter: blur(20px);
-            position: relative;
-            z-index: 10;
-        }
-
-        footer p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.95em;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .stats-overview,
-            .ml-viz-bg {
-                display: none;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .timeline::before {
-                left: 30px;
-            }
-
-            .exp-item,
-            .exp-item:nth-child(odd),
-            .exp-item:nth-child(even) {
-                flex-direction: row;
-            }
-
-            .exp-content {
-                width: calc(100% - 60px);
-                margin-left: 60px;
-            }
-
-            .exp-dot {
-                left: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            nav ul {
-                gap: 20px;
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                font-size: 12px;
-            }
-
-            .page-title {
-                font-size: 2.5em;
-            }
-
-            .exp-card {
-                padding: 25px;
-            }
-
-            .exp-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .exp-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="gradient-bg"></div>
     <canvas id="particles"></canvas>
 
-    <!-- ML Visualizations Background -->
-    <div class="ml-viz-bg">
-        <canvas id="neuralNetworkViz" class="neural-network-viz"></canvas>
-        <canvas id="diffusionViz" class="diffusion-viz"></canvas>
-        <canvas id="trainingViz" class="training-viz"></canvas>
-    </div>
-
-    <!-- Stats Overview -->
-    <div class="stats-overview">
-        <div class="stat-badge">
-            <div class="stat-badge-icon"><i class="fas fa-briefcase"></i></div>
-            <div class="stat-badge-label">3+ Roles</div>
-        </div>
-        <div class="stat-badge">
-            <div class="stat-badge-icon"><i class="fas fa-code-branch"></i></div>
-            <div class="stat-badge-label">Open Source</div>
-        </div>
-        <div class="stat-badge">
-            <div class="stat-badge-icon"><i class="fas fa-rocket"></i></div>
-            <div class="stat-badge-label">Active</div>
-        </div>
-    </div>
-
-    <header id="header">
-        <nav class="container">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="contact.html">Contact</a></li>
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">Nishanth<span>.</span></a>
+            <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <ul id="navLinks" class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="skills.html" class="nav-link">Skills</a></li>
+                <li><a href="experience.html" class="nav-link active">Experience</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="education.html" class="nav-link">Education</a></li>
+                <li><a href="contact.html" class="nav-link nav-cta">Hire Me</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
+    <main class="subpage-main">
         <div class="container">
             <h1 class="page-title">Professional Journey</h1>
-            <p class="page-subtitle">// Building the future with AI & Research</p>
+            <p class="page-subtitle">// Building the future with AI research & production systems</p>
 
             <div class="timeline">
-                <!-- Experience 1 -->
-                <div class="exp-item">
+                <!-- Experience 1: IIIT Hyderabad -->
+                <div class="exp-item reveal">
                     <div class="exp-content">
-                        <div class="exp-card">
+                        <div class="exp-card content-card" style="margin-bottom:0;">
                             <div class="exp-header">
-                                <div class="exp-icon">
-                                    <i class="fas fa-flask"></i>
-                                </div>
+                                <div class="exp-icon"><i class="fas fa-flask"></i></div>
                                 <div class="exp-header-text">
-                                    <h2>AI Researcher Fellow</h2>
+                                    <h3>AI Research Fellow</h3>
                                     <div class="exp-company">iHub, IIIT Hyderabad</div>
                                 </div>
                             </div>
-
                             <div class="exp-meta">
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>July 2025 – Present</span>
-                                </div>
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Hyderabad, India</span>
-                                </div>
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-microscope"></i>
-                                    <span>Drugs & Chemistry</span>
-                                </div>
+                                <div class="exp-meta-item"><i class="fas fa-calendar"></i><span>July 2025 – Present</span></div>
+                                <div class="exp-meta-item"><i class="fas fa-map-marker-alt"></i><span>Hyderabad, India</span></div>
+                                <div class="exp-meta-item"><i class="fas fa-microscope"></i><span>Drugs & Computational Chemistry</span></div>
                             </div>
-
-                            <div class="exp-description">
+                            <ul>
+                                <li>Reproduced and implemented research paper code in the field of drug discovery and computational chemistry</li>
+                                <li>Optimized model architectures to reduce GPU usage by <strong>40%</strong>, improving computational efficiency and cost-effectiveness</li>
+                                <li>Enhanced model capabilities through architectural modifications and performance improvements</li>
+                                <li>Conducted research on AI applications in pharmaceutical research and chemical compound analysis</li>
+                            </ul>
+                            <div class="research-box" style="margin-top:20px;">
+                                <h3><i class="fas fa-chalkboard-teacher"></i> Teaching Assistant — ML4Science</h3>
                                 <ul>
-                                    <li>Reproduced and implemented research paper code in the field of drug discovery and computational chemistry</li>
-                                    <li>Optimized model architectures to reduce GPU usage by 40%, improving computational efficiency and cost-effectiveness</li>
-                                    <li>Enhanced model capabilities through architectural modifications and performance improvements</li>
-                                    <li>Conducted research on AI applications in pharmaceutical research and chemical compound analysis</li>
+                                    <li>Conducted hands-on workshops on advanced deep learning for PhD, MS, and UG students from STEM backgrounds</li>
+                                    <li>Taught comprehensive sessions on <strong>Diffusion Models (DDPM, DDIM)</strong> — theory, implementation, and practical applications</li>
+                                    <li>Delivered <strong>CNN architecture workshops</strong> — design patterns, transfer learning, and real-world CV applications</li>
+                                    <li>Guided students through research methodologies, experiment design, and model optimization techniques</li>
                                 </ul>
-                                
-                                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(0, 255, 245, 0.2);">
-                                    <h3 style="color: var(--primary); font-size: 1.1em; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
-                                        <i class="fas fa-chalkboard-teacher"></i>
-                                        Teaching Assistant - ML4Science
-                                    </h3>
-                                    <ul>
-                                        <li>Conducted hands-on workshops on advanced deep learning for PhD, MS, and UG students from STEM backgrounds</li>
-                                        <li>Taught comprehensive sessions on Diffusion Models (DDPM, DDIM) covering theory, implementation, and practical applications in image synthesis</li>
-                                        <li>Delivered CNN architecture workshops focusing on design patterns, transfer learning, and real-world computer vision applications</li>
-                                        <li>Guided students through research methodologies, experiment design, and model optimization techniques for scientific computing</li>
-                                    </ul>
-                                </div>
                             </div>
-
                             <div class="exp-tags">
                                 <span class="tag">PyTorch</span>
                                 <span class="tag">Drug Discovery</span>
@@ -653,41 +84,27 @@
                     <div class="exp-dot"></div>
                 </div>
 
-                <!-- Experience 2 -->
-                <div class="exp-item">
+                <!-- Experience 2: Open Source -->
+                <div class="exp-item reveal">
                     <div class="exp-content">
-                        <div class="exp-card">
+                        <div class="exp-card content-card" style="margin-bottom:0;">
                             <div class="exp-header">
-                                <div class="exp-icon">
-                                    <i class="fab fa-github"></i>
-                                </div>
+                                <div class="exp-icon"><i class="fab fa-github"></i></div>
                                 <div class="exp-header-text">
-                                    <h2>Open Source Contributor</h2>
+                                    <h3>Open Source Contributor</h3>
                                     <div class="exp-company">Scikit-learn & PyTorch</div>
                                 </div>
                             </div>
-
                             <div class="exp-meta">
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>May 2025 – Present</span>
-                                </div>
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-globe"></i>
-                                    <span>Remote</span>
-                                </div>
+                                <div class="exp-meta-item"><i class="fas fa-calendar"></i><span>May 2025 – Present</span></div>
+                                <div class="exp-meta-item"><i class="fas fa-globe"></i><span>Remote</span></div>
                             </div>
-
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Actively contribute to Scikit-learn, enhancing machine learning algorithms and improving framework functionality</li>
-                                    <li>Implement and optimize PyTorch modules, enhancing deep learning model performance and functionality</li>
-                                    <li>Collaborate with global developer communities to resolve issues, review pull requests, and maintain documentation</li>
-                                    <li>Develop improvements to ML algorithms including preprocessing methods, model implementations, and utility functions</li>
-                                    <li>Create educational content and examples to help new users understand implementation best practices</li>
-                                </ul>
-                            </div>
-
+                            <ul>
+                                <li>Actively contribute to <strong>Scikit-learn</strong>, enhancing machine learning algorithms and improving framework functionality</li>
+                                <li>Implement and optimize <strong>PyTorch</strong> modules, enhancing deep learning model performance and functionality</li>
+                                <li>Collaborate with global developer communities to resolve issues, review pull requests, and maintain documentation</li>
+                                <li>Develop improvements to ML algorithms including preprocessing methods, model implementations, and utility functions</li>
+                            </ul>
                             <div class="exp-tags">
                                 <span class="tag">Scikit-learn</span>
                                 <span class="tag">PyTorch</span>
@@ -700,41 +117,27 @@
                     <div class="exp-dot"></div>
                 </div>
 
-                <!-- Experience 3 -->
-                <div class="exp-item">
+                <!-- Experience 3: ProwessIQ -->
+                <div class="exp-item reveal">
                     <div class="exp-content">
-                        <div class="exp-card">
+                        <div class="exp-card content-card" style="margin-bottom:0;">
                             <div class="exp-header">
-                                <div class="exp-icon">
-                                    <i class="fas fa-database"></i>
-                                </div>
+                                <div class="exp-icon"><i class="fas fa-database"></i></div>
                                 <div class="exp-header-text">
-                                    <h2>Oracle APEX Application Trainee</h2>
+                                    <h3>AI Application Trainee</h3>
                                     <div class="exp-company">ProwessIQ Information Systems Pvt Ltd</div>
                                 </div>
                             </div>
-
                             <div class="exp-meta">
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>Feb 2025 – Present</span>
-                                </div>
-                                <div class="exp-meta-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span>Chennai, India</span>
-                                </div>
+                                <div class="exp-meta-item"><i class="fas fa-calendar"></i><span>Feb 2025 – Present</span></div>
+                                <div class="exp-meta-item"><i class="fas fa-map-marker-alt"></i><span>Chennai, India</span></div>
                             </div>
-
-                            <div class="exp-description">
-                                <ul>
-                                    <li>Developed an AI-powered image recommendation system using EfficientNet and FAISS, improving image retrieval accuracy</li>
-                                    <li>Engineered a seamless Oracle APEX integration, optimizing database interactions and enhancing system efficiency</li>
-                                    <li>Designed and deployed a scalable AI solution for enterprise applications, reducing computational overhead</li>
-                                    <li>Collaborated cross-functionally with data scientists and software engineers to refine model performance and deployment strategies</li>
-                                    <li>Optimized system performance by implementing data preprocessing pipelines, ensuring high-quality model inputs</li>
-                                </ul>
-                            </div>
-
+                            <ul>
+                                <li>Developed an <strong>AI-powered image recommendation system</strong> using EfficientNet and FAISS, improving image retrieval accuracy</li>
+                                <li>Engineered a seamless <strong>Oracle APEX integration</strong>, optimizing database interactions and enhancing system efficiency</li>
+                                <li>Designed and deployed a scalable AI solution for enterprise applications, reducing computational overhead</li>
+                                <li>Collaborated cross-functionally with data scientists and software engineers to refine model performance and deployment strategies</li>
+                            </ul>
                             <div class="exp-tags">
                                 <span class="tag">Oracle APEX</span>
                                 <span class="tag">EfficientNet</span>
@@ -750,410 +153,24 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 R Nishanth. Engineered with precision and passion.</p>
+            <div class="footer-top">
+                <a href="index.html" class="nav-logo">Nishanth<span>.</span></a>
+                <p>Agentic AI Systems — Engineered for Enterprise Scale.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 R Nishanth. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="projects.html">Projects</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Particle System
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        const particleCount = 80;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.3;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 255, 245, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 255, 245, ${0.15 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animateParticles);
-        }
-
-        animateParticles();
-
-        // Neural Network Visualization
-        const nnCanvas = document.getElementById('neuralNetworkViz');
-        const nnCtx = nnCanvas.getContext('2d');
-        nnCanvas.width = 280;
-        nnCanvas.height = 320;
-
-        const layers = [4, 6, 6, 4, 2];
-        const neuronRadius = 8;
-        const layerSpacing = 60;
-        const neuronSpacing = 45;
-
-        function drawNeuralNetwork() {
-            nnCtx.clearRect(0, 0, nnCanvas.width, nnCanvas.height);
-            
-            const neurons = [];
-            
-            // Calculate neuron positions
-            layers.forEach((count, layerIdx) => {
-                const layerNeurons = [];
-                const startY = (nnCanvas.height - (count - 1) * neuronSpacing) / 2;
-                const x = 30 + layerIdx * layerSpacing;
-                
-                for (let i = 0; i < count; i++) {
-                    layerNeurons.push({ x, y: startY + i * neuronSpacing });
-                }
-                neurons.push(layerNeurons);
-            });
-            
-            // Draw connections
-            for (let l = 0; l < neurons.length - 1; l++) {
-                neurons[l].forEach(n1 => {
-                    neurons[l + 1].forEach(n2 => {
-                        nnCtx.beginPath();
-                        nnCtx.moveTo(n1.x, n1.y);
-                        nnCtx.lineTo(n2.x, n2.y);
-                        nnCtx.strokeStyle = `rgba(0, 255, 245, ${0.15 + Math.random() * 0.15})`;
-                        nnCtx.lineWidth = 1;
-                        nnCtx.stroke();
-                    });
-                });
-            }
-            
-            // Draw neurons
-            neurons.forEach((layer, layerIdx) => {
-                layer.forEach(neuron => {
-                    nnCtx.beginPath();
-                    nnCtx.arc(neuron.x, neuron.y, neuronRadius, 0, Math.PI * 2);
-                    const gradient = nnCtx.createRadialGradient(neuron.x, neuron.y, 0, neuron.x, neuron.y, neuronRadius);
-                    gradient.addColorStop(0, 'rgba(0, 255, 245, 0.8)');
-                    gradient.addColorStop(1, 'rgba(124, 58, 237, 0.6)');
-                    nnCtx.fillStyle = gradient;
-                    nnCtx.fill();
-                    nnCtx.strokeStyle = 'rgba(0, 255, 245, 0.5)';
-                    nnCtx.lineWidth = 2;
-                    nnCtx.stroke();
-                });
-            });
-            
-            // Add labels
-            nnCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            nnCtx.font = '10px JetBrains Mono';
-            nnCtx.textAlign = 'center';
-            nnCtx.fillText('Input', 30, 20);
-            nnCtx.fillText('Output', 270, 20);
-            
-            // Animate signal flow
-            const time = Date.now() / 1000;
-            const progress = (time % 2) / 2;
-            const activeLayer = Math.floor(progress * (layers.length - 1));
-            
-            if (activeLayer < neurons.length) {
-                neurons[activeLayer].forEach(neuron => {
-                    nnCtx.beginPath();
-                    nnCtx.arc(neuron.x, neuron.y, neuronRadius + 4, 0, Math.PI * 2);
-                    nnCtx.strokeStyle = `rgba(0, 255, 245, ${0.5 * (1 - progress % 0.25)})`;
-                    nnCtx.lineWidth = 2;
-                    nnCtx.stroke();
-                });
-            }
-            
-            requestAnimationFrame(drawNeuralNetwork);
-        }
-        
-        drawNeuralNetwork();
-
-        // Diffusion Process Visualization
-        const diffCanvas = document.getElementById('diffusionViz');
-        const diffCtx = diffCanvas.getContext('2d');
-        diffCanvas.width = 300;
-        diffCanvas.height = 280;
-
-        let diffusionStep = 0;
-        const maxSteps = 50;
-
-        function drawDiffusionProcess() {
-            diffCtx.clearRect(0, 0, diffCanvas.width, diffCanvas.height);
-            
-            // Title
-            diffCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            diffCtx.font = '11px JetBrains Mono';
-            diffCtx.textAlign = 'center';
-            diffCtx.fillText('Diffusion Denoising Process', diffCanvas.width / 2, 20);
-            
-            const boxSize = 80;
-            const boxes = 3;
-            const spacing = 15;
-            const startX = (diffCanvas.width - (boxes * boxSize + (boxes - 1) * spacing)) / 2;
-            const startY = 50;
-            
-            // Draw three stages: Noisy -> Intermediate -> Clean
-            for (let i = 0; i < boxes; i++) {
-                const x = startX + i * (boxSize + spacing);
-                const noiseLevel = 1 - (i / (boxes - 1)) * (diffusionStep / maxSteps);
-                
-                // Box background
-                diffCtx.fillStyle = 'rgba(15, 15, 25, 0.6)';
-                diffCtx.fillRect(x, startY, boxSize, boxSize);
-                
-                // Add noise pattern
-                for (let py = 0; py < boxSize; py += 4) {
-                    for (let px = 0; px < boxSize; px += 4) {
-                        if (Math.random() < noiseLevel) {
-                            const brightness = Math.random();
-                            diffCtx.fillStyle = `rgba(0, 255, 245, ${brightness * 0.5})`;
-                            diffCtx.fillRect(x + px, startY + py, 4, 4);
-                        }
-                    }
-                }
-                
-                // Add clear pattern (circle) that emerges
-                const clearAlpha = 1 - noiseLevel;
-                const centerX = x + boxSize / 2;
-                const centerY = startY + boxSize / 2;
-                const radius = 25;
-                
-                const gradient = diffCtx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
-                gradient.addColorStop(0, `rgba(0, 255, 245, ${clearAlpha * 0.8})`);
-                gradient.addColorStop(1, `rgba(124, 58, 237, ${clearAlpha * 0.6})`);
-                
-                diffCtx.beginPath();
-                diffCtx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-                diffCtx.fillStyle = gradient;
-                diffCtx.fill();
-                
-                // Border
-                diffCtx.strokeStyle = `rgba(0, 255, 245, ${0.3 + clearAlpha * 0.4})`;
-                diffCtx.lineWidth = 2;
-                diffCtx.strokeRect(x, startY, boxSize, boxSize);
-                
-                // Labels
-                diffCtx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-                diffCtx.font = '9px JetBrains Mono';
-                diffCtx.textAlign = 'center';
-                const labels = ['Noisy', 'Denoising', 'Clean'];
-                diffCtx.fillText(labels[i], centerX, startY + boxSize + 15);
-            }
-            
-            // Draw arrows
-            diffCtx.strokeStyle = 'rgba(0, 255, 245, 0.6)';
-            diffCtx.fillStyle = 'rgba(0, 255, 245, 0.6)';
-            diffCtx.lineWidth = 2;
-            
-            for (let i = 0; i < boxes - 1; i++) {
-                const x1 = startX + (i + 1) * boxSize + i * spacing;
-                const x2 = startX + (i + 1) * boxSize + (i + 1) * spacing;
-                const y = startY + boxSize / 2;
-                
-                diffCtx.beginPath();
-                diffCtx.moveTo(x1 + 5, y);
-                diffCtx.lineTo(x2 - 10, y);
-                diffCtx.stroke();
-                
-                // Arrowhead
-                diffCtx.beginPath();
-                diffCtx.moveTo(x2 - 10, y);
-                diffCtx.lineTo(x2 - 15, y - 4);
-                diffCtx.lineTo(x2 - 15, y + 4);
-                diffCtx.closePath();
-                diffCtx.fill();
-            }
-            
-            // Step counter
-            diffCtx.fillStyle = 'rgba(0, 255, 245, 0.8)';
-            diffCtx.font = 'bold 11px JetBrains Mono';
-            diffCtx.textAlign = 'center';
-            diffCtx.fillText(`Step: ${diffusionStep}/${maxSteps}`, diffCanvas.width / 2, startY + boxSize + 40);
-            
-            // Progress bar
-            const barWidth = 200;
-            const barHeight = 8;
-            const barX = (diffCanvas.width - barWidth) / 2;
-            const barY = startY + boxSize + 55;
-            
-            diffCtx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-            diffCtx.fillRect(barX, barY, barWidth, barHeight);
-            
-            const progressGradient = diffCtx.createLinearGradient(barX, 0, barX + barWidth * (diffusionStep / maxSteps), 0);
-            progressGradient.addColorStop(0, 'rgba(0, 255, 245, 0.8)');
-            progressGradient.addColorStop(1, 'rgba(124, 58, 237, 0.8)');
-            diffCtx.fillStyle = progressGradient;
-            diffCtx.fillRect(barX, barY, barWidth * (diffusionStep / maxSteps), barHeight);
-            
-            diffusionStep = (diffusionStep + 1) % (maxSteps + 20);
-            
-            setTimeout(() => requestAnimationFrame(drawDiffusionProcess), 80);
-        }
-        
-        drawDiffusionProcess();
-
-        // Training Loss Visualization
-        const trainCanvas = document.getElementById('trainingViz');
-        const trainCtx = trainCanvas.getContext('2d');
-        trainCanvas.width = 320;
-        trainCanvas.height = 200;
-
-        const epochs = 100;
-        let currentEpoch = 0;
-        const trainLoss = [];
-        const valLoss = [];
-
-        for (let i = 0; i < epochs; i++) {
-            trainLoss.push(2.5 * Math.exp(-i / 20) + 0.05 * Math.random());
-            valLoss.push(2.5 * Math.exp(-i / 20) + 0.1 * Math.random() + 0.05);
-        }
-
-        function drawTrainingCurves() {
-            trainCtx.clearRect(0, 0, trainCanvas.width, trainCanvas.height);
-            
-            const padding = 40;
-            const graphWidth = trainCanvas.width - padding * 2;
-            const graphHeight = trainCanvas.height - padding * 2;
-            
-            // Title
-            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            trainCtx.font = '11px JetBrains Mono';
-            trainCtx.textAlign = 'center';
-            trainCtx.fillText('Model Training Progress', trainCanvas.width / 2, 15);
-            
-            // Draw axes
-            trainCtx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-            trainCtx.lineWidth = 1;
-            trainCtx.beginPath();
-            trainCtx.moveTo(padding, padding);
-            trainCtx.lineTo(padding, trainCanvas.height - padding);
-            trainCtx.lineTo(trainCanvas.width - padding, trainCanvas.height - padding);
-            trainCtx.stroke();
-            
-            // Grid
-            trainCtx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-            for (let i = 0; i <= 4; i++) {
-                const y = padding + (i / 4) * graphHeight;
-                trainCtx.beginPath();
-                trainCtx.moveTo(padding, y);
-                trainCtx.lineTo(trainCanvas.width - padding, y);
-                trainCtx.stroke();
-            }
-            
-            // Draw curves
-            const drawCurve = (data, color, label) => {
-                trainCtx.beginPath();
-                trainCtx.strokeStyle = color;
-                trainCtx.lineWidth = 2.5;
-                trainCtx.shadowBlur = 8;
-                trainCtx.shadowColor = color;
-                
-                for (let i = 0; i <= Math.min(currentEpoch, data.length - 1); i++) {
-                    const x = padding + (i / (epochs - 1)) * graphWidth;
-                    const y = trainCanvas.height - padding - (data[i] / 3) * graphHeight;
-                    
-                    if (i === 0) {
-                        trainCtx.moveTo(x, y);
-                    } else {
-                        trainCtx.lineTo(x, y);
-                    }
-                }
-                trainCtx.stroke();
-                trainCtx.shadowBlur = 0;
-            };
-            
-            drawCurve(trainLoss, 'rgba(0, 255, 245, 0.9)', 'Train');
-            drawCurve(valLoss, 'rgba(124, 58, 237, 0.9)', 'Val');
-            
-            // Legend
-            trainCtx.font = '10px JetBrains Mono';
-            trainCtx.textAlign = 'left';
-            
-            trainCtx.fillStyle = 'rgba(0, 255, 245, 0.9)';
-            trainCtx.fillRect(padding + 10, padding + 10, 20, 3);
-            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            trainCtx.fillText('Train Loss', padding + 35, padding + 13);
-            
-            trainCtx.fillStyle = 'rgba(124, 58, 237, 0.9)';
-            trainCtx.fillRect(padding + 120, padding + 10, 20, 3);
-            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-            trainCtx.fillText('Val Loss', padding + 145, padding + 13);
-            
-            // Epoch label
-            trainCtx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-            trainCtx.font = '9px JetBrains Mono';
-            trainCtx.textAlign = 'center';
-            trainCtx.fillText(`Epoch: ${currentEpoch}/${epochs}`, trainCanvas.width / 2, trainCanvas.height - 10);
-            
-            currentEpoch++;
-            if (currentEpoch >= epochs) {
-                setTimeout(() => {
-                    currentEpoch = 0;
-                }, 2000);
-            }
-            
-            setTimeout(() => requestAnimationFrame(drawTrainingCurves), 50);
-        }
-        
-        drawTrainingCurves();
-
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+    <script src="script.js"></script>
 </body>
 </html>

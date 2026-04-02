@@ -1,0 +1,10 @@
+{
+  "name": "R Nishanth — Agentic AI Systems Architect",
+  "short_name": "Nishanth AI",
+  "description": "I build production-grade Agentic AI systems — multi-agent orchestration, RAG pipelines, MCP/A2A protocols, and inference optimization for enterprise scale.",
+  "start_url": "/my_protfolio/",
+  "display": "standalone",
+  "background_color": "#050c1a",
+  "theme_color": "#7c3aed",
+  "icons": []
+}
