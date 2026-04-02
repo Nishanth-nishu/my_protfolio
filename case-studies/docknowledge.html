@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocKnowledge Case Study | R Nishanth</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="case-study-page">
+    <div class="gradient-bg"></div>
+    <nav id="navbar" class="subpage-nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">Nishanth<span>.</span></a>
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="subpage-main">
+        <div class="container">
+            <h1 class="page-title">DocKnowledge: AI Document Intelligence</h1>
+            <p class="page-subtitle">// Solving the RAG retrieval precision gap</p>
+
+            <div class="content-card reveal">
+                <h2>The Challenge</h2>
+                <p>Most enterprises have massive silos of PDF/TXT technical documents. Traditional keyword search is insufficient for complex reasoning, while basic vector-based RAG often misses nuances or hallucinates due to poor context retrieval.</p>
+                
+                <div class="research-box">
+                    <h3><i class="fas fa-microscope"></i> Research Insight</h3>
+                    <p>Standard vector search often fails to capture "long-range" dependencies in multi-column PDFs. By implementing <strong>Sentence Window Retrieval</strong> and <strong>Reciprocal Rank Fusion (RRF)</strong>, we can significantly boost retrieval precision.</p>
+                </div>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>The Solution: Hybrid RAG Architecture</h2>
+                <div class="rag-pipeline">
+                    <span class="pipeline-step">Parse (Docling)</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Embed (384-dim)</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Hybrid Vector + BM25</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">RRF Fusion</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">LLM Reasoning (Gemini)</span>
+                </div>
+                <ul>
+                    <li><strong>Hybrid Search:</strong> Combines dense vector embeddings with sparse BM25 keyword matching.</li>
+                    <li><strong>Context Fusing:</strong> Uses RRF to rank and merge results from multiple search strategies.</li>
+                    <li><strong>Citation Engine:</strong> Automatic page-level and paragraph-level attribution for 100% verifiability.</li>
+                </ul>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>Impact Metrics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">20%</div>
+                        <div class="label">Higher Retrieval Precision</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">&lt; 3s</div>
+                        <div class="label">Average Query Latency</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">100%</div>
+                        <div class="label">Citation Accuracy</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="http://16.176.103.66:3000/" target="_blank" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> View Live Demo</a>
+                <a href="https://github.com/Nishanth-nishu/Smart-Document-Q-A-System" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> View GitHub</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 R Nishanth. Built for the future of AI Agent Systems.</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>

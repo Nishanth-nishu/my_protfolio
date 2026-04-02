@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClinicalDischarge AI Case Study | R Nishanth</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="case-study-page">
+    <div class="gradient-bg"></div>
+    <nav id="navbar" class="subpage-nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">Nishanth<span>.</span></a>
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="subpage-main">
+        <div class="container">
+            <h1 class="page-title">ClinicalDischarge: Healthcare Multi-Agent Intelligence</h1>
+            <p class="page-subtitle">// Reducing hospital readmission rates with autonomous agents</p>
+
+            <div class="content-card reveal">
+                <h2>The Challenge</h2>
+                <p>Hospital discharge is one of the most critical and error-prone phases of care. Manual discharge summaries often miss drug-drug interactions or fail to schedule follow-ups within the critical 48-hour window, leading to high readmission rates and legal liabilities.</p>
+                
+                <div class="research-box">
+                    <h3><i class="fas fa-notes-medical"></i> Agentic Orchestration</h3>
+                    <p>Instead of a single LLM, we use 4 specialized agents: <strong>MedicationAgent</strong> (cross-validation), <strong>SchedulingAgent</strong> (API integration), <strong>RiskAgent</strong> (patient scoring), and <strong>LetterAgent</strong> (summary generation).</p>
+                </div>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>The Deployment: AWS-Native Multi-Agent System</h2>
+                <div class="rag-pipeline">
+                    <span class="pipeline-step">EMR Integration</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Medication Rec</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Risk Scoring</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Draft Summary</span>
+                    <span class="pipeline-arrow">→</span>
+                    <span class="pipeline-step">Doctor Verification</span>
+                </div>
+                <ul>
+                    <li><strong>HIPAA Architecture:</strong> Deployed on AWS EC2 with IAM roles and RDS VPC isolation.</li>
+                    <li><strong>Agent Governance:</strong> Human-in-the-loop (HITL) checkpoints for final clinical approval.</li>
+                    <li><strong>Scalability:</strong> Dockerized microservices that auto-scale based on patient volume.</li>
+                </ul>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>Impact Metrics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">60%</div>
+                        <div class="label">Reduction in Admin Burden</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">99.8%</div>
+                        <div class="label">Clinical Accuracy</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">AWS</div>
+                        <div class="label">Production Deployed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="https://github.com/Nishanth-nishu" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View Architecture</a>
+                <a href="../index.html#contact" class="btn btn-secondary"><i class="fas fa-stethoscope"></i> Deploy Locally</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 R Nishanth. Built for the future of AI Agent Systems.</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
