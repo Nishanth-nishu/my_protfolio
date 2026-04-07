@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synergex Med AI Case Study | R Nishanth</title>
+    <link rel="icon" type="image/jpeg" href="../assets/images/profile_pic.jpeg">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="case-study-page">
+    <div class="gradient-bg"></div>
+    <nav id="navbar" class="subpage-nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">Nishanth<span>.</span></a>
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="subpage-main">
+        <div class="container">
+            <h1 class="page-title">Synergex Med: Multi-Agent Clinical QA</h1>
+            <p class="page-subtitle">// Automating HIPAA-Compliant Quality Analysis</p>
+
+            <div class="content-card reveal">
+                <h2>The Challenge</h2>
+                <p>Synergex Med manages 39+ clinic locations, handling thousands of patient calls daily. The manual QA
+                    process was slow, prone to human error, and could not guarantee 100% HIPAA compliance monitoring
+                    across all transcripts. The goal was to build a system that could analyze 100% of calls in near
+                    real-time with zero-trust security.</p>
+
+                <div class="research-box">
+                    <h3><i class="fas fa-microscope"></i> Research Insight</h3>
+                    <p>Inspired by <strong>Chain-of-Thought (CoT) Prompting</strong> (Wei et al., 2022), the system uses
+                        a two-phase analysis. By forcing the model to anchor evidence (Phase 1) before generating an
+                        assessment (Phase 2), we effectively eliminated hallucinations in HIPAA risk detection.</p>
+                </div>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>The Solution: Agentic Verification Architecture</h2>
+                <div class="mermaid">
+                    graph TD
+                    A[Call Transcript] --> B[Input Validation]
+                    B --> C[Orchestrator]
+                    C --> D[Phase 1: Evidence Anchoring]
+                    D --> E[Phase 2: Structured Assessment]
+                    E --> F[Consistency Guardrail]
+                    F --> G[Final JSON Report]
+                </div>
+                <ul>
+                    <li><strong>Evidence Anchoring:</strong> The LLM must cite specific transcript quotes for every flag
+                        (HIPAA, Professionalism, etc.).</li>
+                    <li><strong>Multi-Key Rotation:</strong> Implemented a resilient provider layer that rotates through
+                        5+ API keys to bypass rate limits and ensure 99.9% availability.</li>
+                    <li><strong>HIPAA Taxonomy:</strong> Built-in detection for 18 PHI identifier categories based on
+                        HIPAA Safe Harbor § 164.514(b).</li>
+                </ul>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>Impact Metrics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">100%</div>
+                        <div class="label">Automated QA Coverage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">39+</div>
+                        <div class="label">Clinics Supported</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">99.9%</div>
+                        <div class="label">System Availability</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="https://github.com/Nishanth-nishu/The-Synergex-Med-AI-Call-QA-System" target="_blank"
+                    class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 R Nishanth. Built for the future of AI Agent Systems.</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>

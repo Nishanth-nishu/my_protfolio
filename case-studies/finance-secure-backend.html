@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Finance Engine Case Study | R Nishanth</title>
+    <link rel="icon" type="image/jpeg" href="../assets/images/profile_pic.jpeg">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="case-study-page">
+    <div class="gradient-bg"></div>
+    <nav id="navbar" class="subpage-nav">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-logo">Nishanth<span>.</span></a>
+            <a href="../index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="subpage-main">
+        <div class="container">
+            <h1 class="page-title">Secure Finance: Enterprise Data Engine</h1>
+            <p class="page-subtitle">// Built with Clean Architecture & Zero-Trust RBAC</p>
+
+            <div class="content-card reveal">
+                <h2>The Challenge</h2>
+                <p>Financial management systems require extreme data integrity, audit trails, and granular access
+                    control. The challenge was to build a production-grade backend that ensures analysts can see data,
+                    admins can modify it, and viewers are strictly restricted—all while maintaining 100% test coverage
+                    for critical paths.</p>
+
+                <div class="research-box">
+                    <h3><i class="fas fa-shield-alt"></i> Architecture Principle</h3>
+                    <p>By following <strong>Clean Architecture</strong> (Uncle Bob), we decoupled business logic
+                        (Services) from data persistence (Repositories). This allows for swapping database engines
+                        (SQLite to PostgreSQL) with zero changes to the core logic, ensuring future-proof scalability.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>The Solution: Zero-Trust Backend Architecture</h2>
+                <ul>
+                    <li><strong>Data-Driven RBAC:</strong> Implemented a permission matrix that decouples role
+                        definitions from enforcement logic. Adding new permissions requires no code changes to the
+                        security dependencies.</li>
+                    <li><strong>SOLID Mastery:</strong> Applied all 5 SOLID principles, particularly Dependency
+                        Inversion (Services depend on Repository abstractions) and Single Responsibility.</li>
+                    <li><strong>Audit Compliance:</strong> Every financial record uses a soft-delete mechanism, ensuring
+                        that "deleted" data remains available for audit history without being visible in standard
+                        queries.</li>
+                </ul>
+            </div>
+
+            <div class="content-card reveal">
+                <h2>Production Readiness</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="number">41+</div>
+                        <div class="label">Automated Tests (Pytest)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">100%</div>
+                        <div class="label">SOLID Compliance</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">Zero</div>
+                        <div class="label">External DB Hard-coding</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="https://github.com/Nishanth-nishu/Finance-Data-Processing-and-Access-Control" target="_blank"
+                    class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2026 R Nishanth. Built for the future of AI Agent Systems.</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+</body>
+
+</html>
