@@ -1,6 +1,6 @@
 /* ========================================================
    script.js — R Nishanth | Agentic AI Systems Architect
-   v2.0 — Market-Positioned 2026
+   v3.0 — GSAP-Enhanced 2026
    ======================================================== */
 
 'use strict';
@@ -75,13 +75,14 @@ if (particleCanvas) {
 // ── Typewriter Effect ──────────────────────────────────────
 const typewriterEl = document.getElementById('typewriter');
 const roles = [
-    'Multi-Agent AI Systems 🤖',
-    'RAG Pipelines & LLM Ops 🔭',
-    'MCP & A2A Protocol Integrations 🔗',
-    'Inference-Optimized AI (5s→2s) ⚡',
-    'HITL Governance Architectures 🛡️',
-    'Distributed Systems on K8s 🚀',
-    'Drug Discovery AI Pipelines 🧬',
+    'Multi-Agent AI Systems \uD83E\uDD16',
+    'RAG Pipelines & LLM Ops \uD83D\uDD2D',
+    'MCP & A2A Protocol Integrations \uD83D\uDD17',
+    'Inference-Optimized AI (5s\u21922s) \u26A1',
+    'HITL Governance Architectures \uD83D\uDEE1\uFE0F',
+    'Distributed Systems on K8s \uD83D\uDE80',
+    'Drug Discovery AI Pipelines \uD83E\uDDEC',
+    'Supply Chain Intelligence \uD83C\uDFED',
 ];
 let roleIdx = 0, charIdx = 0, deleting = false;
 
@@ -106,44 +107,52 @@ function typewrite() {
 }
 typewrite();
 
-// ── Scroll Reveal (Intersection Observer) ─────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-);
-revealEls.forEach(el => revealObserver.observe(el));
-
-// ── Counter Animation ──────────────────────────────────────
+// ── Counter Animation (fallback if GSAP not loaded) ────────
 const counters = document.querySelectorAll('.stat-number[data-target]');
-const counterObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.dataset.target, 10);
-                const duration = 1500;
-                const step = target / (duration / 16);
-                let current = 0;
-                const interval = setInterval(() => {
-                    current = Math.min(current + step, target);
-                    el.textContent = Math.round(current);
-                    if (current >= target) clearInterval(interval);
-                }, 16);
-                counterObserver.unobserve(el);
-            }
-        });
-    },
-    { threshold: 0.5 }
-);
-counters.forEach(c => counterObserver.observe(c));
+if (counters.length && typeof gsap === 'undefined') {
+    const counterObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.dataset.target, 10);
+                    const duration = 1500;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    const interval = setInterval(() => {
+                        current = Math.min(current + step, target);
+                        el.textContent = Math.round(current);
+                        if (current >= target) clearInterval(interval);
+                    }, 16);
+                    counterObserver.unobserve(el);
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+    counters.forEach(c => counterObserver.observe(c));
+}
+
+// ── Scroll Reveal (GSAP fallback only) ─────────────────────
+function initFallbackReveal() {
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach(el => observer.observe(el));
+}
+
+if (typeof gsap === 'undefined') {
+    initFallbackReveal();
+}
 
 // ── Navbar: Scroll Behaviour & Active Link ─────────────────
 const navbar = document.getElementById('navbar');
@@ -152,15 +161,11 @@ const sections = document.querySelectorAll('section[id]');
 
 function updateNav() {
     const scrollY = window.scrollY;
-
     if (navbar) {
         navbar.classList.toggle('scrolled', scrollY > 40);
     }
-
-    // Back to top
     document.getElementById('backToTop')?.classList.toggle('visible', scrollY > 400);
 
-    // Active link highlight
     let current = '';
     sections.forEach(section => {
         if (window.scrollY >= section.offsetTop - 120) {
@@ -168,7 +173,7 @@ function updateNav() {
         }
     });
     navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
 }
 
@@ -262,7 +267,7 @@ contactForm?.addEventListener('submit', async (e) => {
 
     const btnText = submitBtn.querySelector('.btn-text');
     const original = btnText?.textContent;
-    if (btnText) btnText.textContent = 'Sending…';
+    if (btnText) btnText.textContent = 'Sending\u2026';
     submitBtn.disabled = true;
 
     try {
@@ -281,9 +286,9 @@ contactForm?.addEventListener('submit', async (e) => {
             const email = document.getElementById('email').value;
             const type = document.getElementById('type').value;
             const message = document.getElementById('message').value;
-            const subject = encodeURIComponent(`[Agentic AI Services] ${type} — from ${name}`);
-            const body = encodeURIComponent(`Hi Nishanth,\n\nName: ${name}\nEmail: ${email}\nType: ${type}\n\n${message}`);
-            window.location.href = `mailto:nishanth0962333@gmail.com?subject=${subject}&body=${body}`;
+            const subject = encodeURIComponent('[Agentic AI Services] ' + type + ' \u2014 from ' + name);
+            const body = encodeURIComponent('Hi Nishanth,\n\nName: ' + name + '\nEmail: ' + email + '\nType: ' + type + '\n\n' + message);
+            window.location.href = 'mailto:nishanth0962333@gmail.com?subject=' + subject + '&body=' + body;
         }
 
         contactForm.reset();
@@ -308,12 +313,12 @@ heroSection?.addEventListener('mousemove', (e) => {
     const yPct = (clientY / mh - 0.5) * 20;
     document.querySelectorAll('.orb').forEach((orb, i) => {
         const factor = (i + 1) * 0.3;
-        orb.style.transform = `translate(${xPct * factor}px, ${yPct * factor}px)`;
+        orb.style.transform = 'translate(' + (xPct * factor) + 'px, ' + (yPct * factor) + 'px)';
     });
 });
 
 // ── Service card hover micro-animation ─────────────────────
-document.querySelectorAll('.service-card, .glass-card').forEach(card => {
+document.querySelectorAll('.service-card, .project-card-sub').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.querySelector('.service-icon-wrap')?.classList.add('icon-pulse');
     });
@@ -322,35 +327,6 @@ document.querySelectorAll('.service-card, .glass-card').forEach(card => {
     });
 });
 
-// ── Credential items stagger animation ─────────────────────
-const credItems = document.querySelectorAll('.credential-item');
-const credObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const items = entry.target.querySelectorAll('.credential-item');
-                items.forEach((item, idx) => {
-                    item.style.transitionDelay = `${idx * 0.1}s`;
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                });
-                credObserver.unobserve(entry.target);
-            }
-        });
-    },
-    { threshold: 0.3 }
-);
-const credBar = document.querySelector('.credentials-bar');
-if (credBar) {
-    // Initialize credential items hidden
-    credItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(16px)';
-        item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    credObserver.observe(credBar);
-}
-
-console.log('%cR Nishanth | Agentic AI Systems Architect 🤖', 'color:#7c3aed;font-size:16px;font-weight:bold;');
-console.log('%cLooking for the source? Let\'s build your AI agent: nishanth0962333@gmail.com', 'color:#22d3ee;font-size:12px;');
-console.log('%c72+ public repos • IIIT-H Research Fellow • Scikit-learn & PyTorch Contributor', 'color:#10b981;font-size:11px;');
+console.log('%cR Nishanth | Agentic AI Systems Architect \uD83E\uDD16', 'color:#7c3aed;font-size:16px;font-weight:bold;');
+console.log('%cPowered by GSAP + ScrollTrigger \u2014 nishanth0962333@gmail.com', 'color:#22d3ee;font-size:12px;');
+console.log('%c72+ repos \u2022 IIIT-H Research Fellow \u2022 ChainMind \u2022 Scikit-learn & PyTorch Contributor', 'color:#10b981;font-size:11px;');
