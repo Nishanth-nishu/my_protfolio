@@ -1,0 +1,46 @@
+[
+  {
+    "category": "Identity",
+    "content": "Nishanth R is an AI Engineer specializing in Agentic AI systems, multi-agent orchestration, and Retrieval-Augmented Generation (RAG). He is currently an AI Research Fellow at IIIT Hyderabad (CCNSB) under Prof. Deva Priyakumar, focusing on Graph Neural Networks for drug discovery."
+  },
+  {
+    "category": "Core Skills",
+    "content": "Agentic AI (ReAct, Reflexion, MCP), Multi-agent orchestration, RAG, Hybrid Search (BM25 + Vector Search + RRF), FastAPI, Distributed Systems, Docker, Kubernetes, AWS, Gemini/OpenAI API."
+  },
+  {
+    "category": "Project: ChainMind",
+    "content": "ChainMind is a production-grade multi-agent, self-healing supply chain intelligence platform. It utilizes a distributed architecture with an Orchestrator Agent, specialist domains (Demand, Inventory, Procurement, Logistics, QA), and a ReAct loop (Think-Act-Observe-Verify). It implements a hybrid RAG system with BM25 + Dense (ChromaDB) fusion and a fault-tolerant LLM router with failover chains and circuit breakers."
+  },
+  {
+    "category": "Project: Synergex Med (AI Call QA)",
+    "content": "Synergex Med is an AI-powered quality analysis system for healthcare phone calls. It replaced manual QA processes for 39+ clinics by analyzing transcripts and producing structured assessments using Gemini 2.5 Flash and FastAPI. It ensures HIPAA compliance and agent performance monitoring."
+  },
+  {
+    "category": "Project: healthcare-GenAI-Guardian",
+    "content": "A production-grade healthcare RAG assistant with built-in PII/PHI compliance. It features an NER-based masking engine using Microsoft Presidio to redact patient names, SSNs, and MRNs. It uses LangChain, FastAPI, and pgvector for high-precision clinical Q&A with a complete clinical audit log."
+  },
+  {
+    "category": "Project: Smart-Document-Q-A-System (DocKnowledge)",
+    "content": "DocKnowledge allows users to upload PDF and text files for natural language querying. It features a scalable backend (FastAPI, pgvector) for semantic search over embeddings and grounded generation with source citations (file/page numbers)."
+  },
+  {
+    "category": "Project: News-fetcher",
+    "content": "An autonomous multi-agent news curator that aggregates trending AI papers and models. It uses OpenAI GPT-4 with Chain-of-Thought reasoning to score article relevance and convert unstructured HTML/transcripts into clean Markdown."
+  },
+  {
+    "category": "Project: Distributed-KV-Core",
+    "content": "A Dynamo-inspired distributed key-value store built in Python. It demonstrates core CS fundamentals like Consistent Hashing, Quorum-based replication, and Write-Ahead Logging (WAL)."
+  },
+  {
+    "category": "Research: IIIT Hyderabad",
+    "content": "At IIIT-H (CCNSB), Nishanth redesigned GNN architectures improving MAE by 6-8%. He worked on Graph Transformers (MAF: 0.37, RMSE: 0.65) and molecular graph modeling for drug discovery under Prof. Deva Priyakumar."
+  },
+  {
+    "category": "GitHub Stats",
+    "content": "Nishanth has 89 repositories including contributions to scikit-learn, PyTorch, and LangChain. He is active in the open-source community as a contributor to major AI frameworks."
+  },
+  {
+    "category": "Contact Information",
+    "content": "Email: nishanth0962333@gmail.com. Phone: +91 6302092732. Location: Hyderabad, India. Portfolio: nishanth-nishu.github.io. LinkedIn: linkedin.com/in/r-nishanth-/. GitHub: github.com/Nishanth-nishu. LeetCode: leetcode.com/u/nishanth_2317."
+  }
+]
