@@ -1,7 +1,6 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
-numpy
-openai
 python-dotenv
 google-generativeai
+mangum
