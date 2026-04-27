@@ -5,6 +5,11 @@ from typing import List, Optional
 from pydantic import BaseModel
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+load_dotenv()
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 
 # Initialize FastAPI
 app = FastAPI()
@@ -111,11 +116,17 @@ async def chat(request: ChatRequest):
     - Always maintain a "Production-Grade" tone.
     """
 
-    # For the actual response, we'll return a structured message.
-    # The user can integrate their Gemini/OpenAI key in the Vercel env vars.
-    
-    # MOCK RESPONSE (For demonstration if no key is found)
-    response_content = f"Hi! I'm here to help you learn about Nishanth. Based on his work on {context_chunks[0]['category']}, he is highly skilled in {context_chunks[0]['content'][:100]}... [This is a RAG-ready response format. Please add your LLM API KEY to the environment variables to activate full reasoning.]"
+    # Generate response via Gemini API
+    try:
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        
+        # We append the system prompt and then the query to make sure it follows guidelines
+        prompt = system_prompt + "\n\nUSER QUESTION:\n" + user_query
+        
+        response = model.generate_content(prompt)
+        response_content = response.text
+    except Exception as e:
+        response_content = f"Error generating response: {str(e)}. Please check your API Key configuration."
 
     return {
         "role": "assistant", 
